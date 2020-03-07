@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : base_05.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha última modificación : 15/10/2018
+Objetivo : Introducir a través de las zones de texto y evaluación de una expresión calculada
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Script HTML que integra las directivas AngularJS -->
+    <div ng-app="" ng-init="velocidad_autorizada=90; velocidad_comprobada=105">
+
+      <!-- Utilización del tipo de letra de caracteres Arial -->
+      <font face="Arial">
+
+        <!-- Introducir la velocidad autorizada -->
+        <p>Velocidad autorizada :
+        <input type="text" ng-model="velocidad_autorizada"></p>
+
+        <!-- Introducir la velocidad comprobada -->
+        <p>Velocidad comprobada :
+        <input type="text" ng-model="velocidad_comprobada"></p>
+
+        <!-- Evaluación del exceso de velocidad -->
+        <!-- Nota del autor: La expresión a evaluar se enmarca como sigue {{expresión}}
+                  o a través de una directiva ng-bind -->
+        Velocidad autorizada : {{velocidad_autorizada}}<br />
+        Velocidad comprobada : {{velocidad_comprobada}}<br />
+        Exceso de velocidad : {{velocidad_comprobada - velocidad_autorizada}}<br />
+        Exceso de velocidad (via ng-bind) :
+        <span ng-bind="velocidad_comprobada - velocidad_autorizada"></span>
+
+      </font>
+
+    </div>
+
+  </body>
+
+</html>

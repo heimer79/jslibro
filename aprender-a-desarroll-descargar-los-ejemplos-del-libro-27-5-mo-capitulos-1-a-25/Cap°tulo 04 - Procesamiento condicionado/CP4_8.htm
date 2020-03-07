@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : CP4_8.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Imprimir en letras el mes correspondiente a un número dado por el teclado(entre 1 y 12)
+        Nota del autor: Utilización de una estructura switch
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>CP4_8</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - Ejercicio CP4_8</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script>
+		
+			/* Visualización del nombre del script */
+			alert("Ejercicio CP4_8");
+
+			/* Declaración de variables locales */
+			var mes;
+
+			/* Introducir el número de mes */
+			mes = parseInt(prompt("Número del mes (1 a 12) :"));
+
+			/* Visualización del resultado */
+			switch (mes) {
+				case 1:
+					document.write("Mes nº " + mes + " : Enero");
+					break;
+				case 2:
+					document.write("Mes nº " + mes + " : Febrero");
+					break;
+				case 3:
+					document.write("Mes nº " + mes + " : Marzo");
+					break;
+				case 4:
+					document.write("Mes nº " + mes + " : Abril");
+					break;
+				case 5:
+					document.write("Mes nº " + mes + " : Mayo");
+					break;
+				case 6:
+					document.write("Mes nº " + mes + " : Junio");
+					break;
+				case 7:
+					document.write("Mes nº " + mes + " : Julio");
+					break;
+				case 8:
+					document.write("Mes nº " + mes + " : Agosto");
+					break;
+				case 9:
+					document.write("Mes nº " + mes + " : Septiembre");
+					break;
+				case 10:
+					document.write("Mes nº " + mes + " : Octubre");
+					break;
+				case 11:
+					document.write("Mes nº " + mes + " : Noviembre");
+					break;
+				case 12:
+					document.write("Mes nº " + mes + " : Diciembre");
+					break;
+				default:
+					document.write("Error de introducción de datos en el nº de mes");
+			}
+
+		</script>
+
+	</body>
+
+</html>

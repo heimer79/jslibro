@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+	<!-- T�tulo del script HTML -->
+	<title>FECHA_02</title>
+
+
+
+</head>
+
+<body>
+	<!-- T�tulo de la operaci�n -->
+	<h1>Ediciones ENI - JavaScript - FECHA_02</h1>
+
+
+
+	<!-- Elemento span de visualizaci�n del timer -->
+	Hora actual : <span id="horaEnCurso"></span>
+
+
+	<!-- Inicio script JavaScript -->
+	<script type="text/javascript" async>
+
+		/* Funci�n visualizarHoraActual */
+		function visualizarHoraActual() {
+			/* Recuperaci�n de la hora del sistema */
+			var miReferenciaTiempo = new Date();
+
+			/* Conversi�n de la hora del sistema en formato local (hh:mm:ss) */
+			var hhmmss = miReferenciaTiempo.toLocaleTimeString();
+
+			/* Visualizaci�n en el span horaEnCurso */
+			document.getElementById("horaEnCurso").innerHTML = hhmmss;
+		}
+
+	</script>
+
+	<!-- Inicio script JavaScript -->
+	<script type="text/javascript" async>
+
+		/* Visualizaci�n del nombre del script */
+		alert("FECHA_02");
+
+		/* Llamada a la funci�n visualizarHoraActual */
+		var miHora = setInterval(function () {
+			visualizarHoraActual()
+		}, 1000);
+
+	</script>
+
+</body>
+
+</html>

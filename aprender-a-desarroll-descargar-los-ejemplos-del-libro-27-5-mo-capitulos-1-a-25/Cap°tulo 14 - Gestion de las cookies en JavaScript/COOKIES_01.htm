@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : COOKIES_01.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Gestión de las cookies en Javascript (Creación de la cookie)
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>COOKIES_01</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - COOKIES_01</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script>
+		
+			/* Visualización del nombre del script */
+			alert("COOKIES_01");
+
+			/* Definición de la función Javascript de creación de una cookie */
+			function creationCookie(nombreCookie, valorCookie, caducidadCookie, rutaCookie, dominioCookie, seguridadCookie) {
+				document.cookie = nombreCookie + ' = ' + escape(valorCookie) + '  ' + ((caducidadCookie == undefined) ? '' : ('; expires=' + caducidadCookie.toGMTString())) + ((rutaCookie == undefined) ? '' : ('; path=' + rutaCookie)) + ((dominioCookie == undefined) ? '' : ('; domain=' + dominioCookie)) + ((seguridadCookie == true) ? '; seguridadCookie' : '');
+			}
+
+			/* Creación de una cookie mediante una llamada de la función creationCookie */
+			var dateExpiration = new Date();
+			dateExpiration.setTime(dateExpiration.getTime() + 300 * 1000);
+			// Nota del autor: - dateExpiration es un objeto de tipo date (por defecto inicializada a la fecha sistema)
+			//      - La fecha de fin de validez de la cookie (se elimina) se calcula a partir
+			//        de la fecha de sistema (5 minutos más tarde aquí, es decir 300 segundos)
+			creationCookie("miCookie", "Ediciones ENI", dateExpiration, "/");
+			// Valor de la cookie : Ediciones ENI
+			// Caducidad de la cookie : En 5 minutos (300 segundos)
+			// Accessibilidad : Accessible a todo el site
+
+			/* Mensaje de control */
+			document.write("La cookie miCookie (que contiene Ediciones ENI) se ha escrito en el disco duro");
+
+		</script>
+
+	</body>
+
+</html>

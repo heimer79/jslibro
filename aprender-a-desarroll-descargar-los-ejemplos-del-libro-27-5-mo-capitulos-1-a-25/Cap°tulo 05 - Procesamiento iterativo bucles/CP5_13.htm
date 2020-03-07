@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : CP5_13.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Contar el número de vocales de una palabra introducida por teclado
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>CP5_13</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - Ejercicio CP5_13</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script>
+		
+			/* Visualización del nombre del script */
+			alert("Ejercicio CP5_13");
+
+			/* Declaración de variables locales */
+			var palabra, num_vocales, contador;
+
+			/* Introducir la palabra */
+			palabra = prompt("Palabra :");
+
+			/* Conversión en mayúsculas (para evitar hacer 12 verificaciones) */
+			palabra = palabra.toUpperCase();
+
+			/* Inicialización de las variables */
+			num_vocales = 0;
+
+			/* Determinación del número de vocales */
+			for ( contador = 0; contador <= palabra.length; contador++) {
+				switch (palabra.charAt(contador)) {
+					case "A":
+						num_vocales = num_vocales + 1;
+						break;
+					case "E":
+						num_vocales = num_vocales + 1;
+						break;
+					case "I":
+						num_vocales = num_vocales + 1;
+						break;
+					case "O":
+						num_vocales = num_vocales + 1;
+						break;
+					case "U":
+						num_vocales = num_vocales + 1;
+						break;
+					case "Y":
+						num_vocales = num_vocales + 1;
+						break;
+				}
+			}
+
+			/* Visualización del resultado */
+			document.write(palabra, " contiene " + num_vocales + " vocales");
+
+		</script>
+
+	</body>
+
+</html>

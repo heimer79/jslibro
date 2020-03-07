@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : poo_06.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : POO en EcmaScript 6 (ejemplo 2)
+Referencia : https://www.wanadev.fr/21-introduction-a-ecmascript-6-le-javascript-de-demain/
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Utilización del tipo de letra de caracteres Arial -->
+    <font face="Arial">
+
+      <!-- Visualización del título del script -->
+      <h3>EcmaScript 6 : POO (herencia) - Script poo_06.htm</h3>
+
+      <!-- Script JavaScript -->
+      <script>
+
+        // Definición de una clase Coche
+        class Coche {
+
+          // Método constructor
+          constructor(marca, modelo, pais) {
+            this.marca = marca;
+            this.modelo = modelo;
+            this.pais = pais;
+          }
+
+          // Método visualizarCoche
+          visualizarCoche() {
+            return "Marca : " + this.marca
+                   + "<br />Modelo : " + this.modelo
+                   + "<br />País : " + this.pais;
+          }
+
+        }
+
+        // Definición de una clase CocheDeporte (extensión de la clase Coche)
+        class CocheDeporte extends Coche {
+
+          // Método constructor
+          constructor(marca, modelo, pais, velocidadmaxi) {
+
+            // Herencia de los atributos de la clase padre Coche
+            super(marca, modelo, pais);
+
+            // Atributo específico al clase CocheDeporte
+            this.velocidadmaxi = velocidadmaxi;
+
+          }
+
+          // Método  mostrarCocheDeporte
+          visualizarCocheDeporte() {
+            return super.visualizarCoche()
+                   + "<br />Velocidad máxima : " + this.velocidadmaxi;
+          }
+
+        }
+
+        // Inicialización de un objeto simca1100 de la clase Coche
+        let simca1100 = new Coche("Simca", "1100", "Francia");
+
+        // Llamada al método visualizarCoche de la clase Coche
+        document.write(simca1100.visualizarCoche());
+
+        // Inicialización de un objeto porsche911 de la clase CocheDeporte
+        let porsche911 = new CocheDeporte("Porsche", "911", "Francia", 290);
+
+        // Llamada al método visualizarCocheDeporte de la clase CocheDeporte
+        document.write("<br /><br />" + porsche911.visualizarCocheDeporte());
+
+      </script>
+
+    </font>
+
+  </body>
+
+</html>

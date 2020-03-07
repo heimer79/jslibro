@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : controle_introducida_11.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : Botones radio de opción del país para el listado de los coches
+-->
+
+<!-- Etiqueta HTML -->
+<html lang="es-ES">
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Script HTML que integra las directivas AngularJS -->
+    <div ng-app="miAplicacion" ng-controller="miControlador">
+
+      <!-- Utilización del tipo de letra de caracteres Arial -->
+      <font face="Arial">
+
+        <!-- Lista desplegable de opciones del país -->
+        Seleccione el país :
+        <input
+          type="radio"
+          ng-model="paisMarcasPreferidas"
+          ng-click="listarCoches()"
+          value="Alemania"
+        />Alemania
+        <input
+          type="radio"
+          ng-model="paisMarcasPreferidas"
+          ng-click="listarCoches()"
+          value="Italia"
+        />Italia
+        <input
+          type="radio"
+          ng-model="paisMarcasPreferidas"
+          ng-click="listarCoches()"
+          value="Todos"
+        />Todos
+
+        <!-- Bucle para recorrer la tabla coches
+             y situarse en una tabla HTML -->
+        <table border="1" width="40%" align="left">
+          <!-- Definición de los nombres de las columnas -->
+          <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>País</th>
+          </tr>
+          <!-- Situar los registros en la tabla HTML -->
+          <br><br><br>
+          <tr ng-repeat="coche in coches">
+            <td>{{coche.marca}}</td>
+            <td>{{coche.modelo}}</td>
+            <td>{{coche.pais}}</td>
+          </tr>
+        </table>
+
+      </font>
+
+    </div>
+
+    <!-- Módulo y controlador AngularJS -->
+    <script>
+
+      // Declaración del módulo llamado application miAplicacion
+      var application = angular.module("miAplicacion", []);
+
+      // Declaración del controlador llamado miControlador
+      application.controller("miControlador", function($scope, $http) {
+
+        // URL de los scripts PHP a llamar
+        $scope.urlListadoCoches = "mysql_02.php";
+
+        // Función de listado de los coches en la BDD MySQL angular
+        // a través del script servidor PHP (mysql_02.php)
+        $scope.listarCoches = function() {
+
+          // Creación de una consulta http a enviar (contenido JSON)
+          // Nota del autor: Comprueba la existencia de la variabel paísMarcasPreferidas
+          //      para evitar un error de codificación en el servidor PHP
+          // alert("País : " + $scope.paisMarcasPreferidas);
+          if ($scope.paisMarcasPreferidas) {
+             $http.post($scope.urlListadoCoches,
+             {"data" : $scope.paisMarcasPreferidas})
+            // Caso de éxito
+            .success(function(data, estado) {
+              // Recuperación del estado
+              $scope.estado = estado;
+              // Recuperación del flujo JSON
+              $scope.coches = data;
+            })
+            // Caso de error
+            .error(function(data, estado) {
+              // Recuperación del estado
+              $scope.estado = estado;
+              // Mensaje de error
+              $scope.data = "La consulta ha fallado";
+            });
+          }
+
+        };
+
+      });
+
+    </script>
+
+  </body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : control_introducida_08.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : Aaumentar/reducir la velocidad de un coche
+        (al presionar y soltar los botones)
+-->
+
+<!-- Etiqueta HTML -->
+<html lang="es-ES">
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Script HTML que integra las directivas AngularJS -->
+    <div ng-app="miAplicacion" ng-controller="miControlador">
+
+      <!-- Utilización del tipo de letra de caracteres Arial -->
+      <font face="Arial">
+
+        <!-- Botón para acelerar (clic) -->
+        <button ng-click="acelerar()">Acelerar (clic en el botón)</button>
+
+        <!-- Botón para frenar (clic) -->
+        <br />
+        <button ng-click="frenar()">Frenar (clic en el botón)</button>
+
+        <!-- Botón para acelerar (presionar) -->
+        <br /><br />
+        <button ng-mousemove="acelerar()">Acelerar (presionar el botón)</button>
+
+        <!-- Botón para frenar (presionar) -->
+        <br />
+        <button ng-mousemove="frenar()">Frenar (presionar el botón)</button>
+
+        <!-- Visualización de la velocidad del coche -->
+        <br /><br />
+        Velocidad : {{velocidadCoche}} km/h
+
+      </font>
+
+    </div>
+
+    <!-- Módulo y controlador AngularJS -->
+    <script>
+
+      // Definición del módulo miAplicacion
+      var application = angular.module('miAplicacion', []);
+
+      // Definición del controlador miControlador
+      application.controller('miControlador', function($scope) {
+
+        // Inicialización de la velocidad del coche
+        $scope.velocidadCoche = 90;
+
+        // Función acelerar
+        $scope.acelerar = function() {
+
+          // Aceleración
+          if ($scope.velocidadCoche<320) {
+            $scope.velocidadCoche = $scope.velocidadCoche + 5;
+          } 
+
+        };
+
+        // Función frenar
+        $scope.frenar = function() {
+
+          // Frenado
+          if ($scope.velocidadCoche>4) {
+            $scope.velocidadCoche = $scope.velocidadCoche - 5; 
+          }
+        };
+
+      });
+
+    </script>
+  
+  </body>
+
+</html>

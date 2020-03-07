@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : JSON_01.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Utilización de JSON - Presentación de las notificaciones
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>JSON_01</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - JSON_01</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script type="text/javascript">
+		
+			/* Visualización del nombre del script */
+			alert("JSON_01");
+
+			/* Definición de 3 objetos JSON */
+			var coche1 = {
+				codigo : "V001",
+				nombre : "Porsche 930 Turbo",
+				velocidad_maxi : 290
+			};
+			var coche2 = {
+				codigo : "V002",
+				nombre : "Porsche 964 Turbo",
+				velocidad_maxi : 300
+			};
+			var coche3 = {
+				codigo : "V003",
+				nombre : "Ferrari 430",
+				velocidad_maxi : 320
+			};
+
+			/* Definición de un objeto composite */
+			var alemanes = {
+				aleman1 : coche1,
+				aleman2 : coche2
+			};
+
+			/* Visualización de propiedades de los objetos
+			 coche1 y coche2 */
+			document.write("El " + coche1.nombre + " -> " + coche1.velocidad_maxi + "Km/h");
+			document.write("<hr />");
+			document.write("El " + coche2.nombre + " -> " + coche2.velocidad_maxi + "Km/h");
+
+			/* Modificación de la propiedad velocidad_maxi
+			 del objeto coche1 */
+			coche1.velocidad_maxi = 260;
+
+			/* Visualización de propiedades del objeto coche1 */
+			document.write("<hr />");
+			document.write("El " + coche1.nombre + " -> " + coche1.velocidad_maxi + "Km/h");
+
+			/* Visualizaciones de la propiedad velocidad_maxi del objeto
+			 coche2 incluidos en el objeto alemanes */
+			document.write("<hr />");
+			document.write("Visualizaciones via el objeto alemanes :");
+			document.write("<br />");
+			document.write("El " + alemanes.aleman2.nombre + " -> " + alemanes.aleman2.velocidad_maxi + "Km/h (sintaxis 1)");
+			document.write("<br />");
+			document.write("El " + alemanes["aleman2"]["nombre"] + " -> " + alemanes["aleman2"]["velocidad_maxi"] + "Km/h (sintaxis 2)");
+
+			/* Definición de 2 tabla (nombres y velocidades_maxi) */
+			var nombres = ["Porsche 930 Turbo", "Porsche 964 Turbo", "Ferrai 430"];
+			var velocidades_maxi = [290, 300, 320];
+
+			/* Definición de un objeto JSON que se basa en las tablas
+			 nombres y velocidades_maxi */
+			var coches = {
+				nomb : nombres,
+				vel : velocidades_maxi
+			};
+
+			/* Visualización (a través de la tabla) de las propiedades
+			 del segundo coche */
+			document.write("<hr />");
+			document.write("Visualización (a través de la tabla) de las propiedades del segundo coche :");
+			document.write("<br />");
+			document.write(coches.nombreb[1] + " -> " + coches.vel[1] + " Km/h");
+
+		</script>
+
+	</body>
+
+</html>

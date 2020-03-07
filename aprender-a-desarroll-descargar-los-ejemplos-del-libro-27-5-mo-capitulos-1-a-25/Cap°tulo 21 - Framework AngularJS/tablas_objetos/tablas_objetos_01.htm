@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : tabla_objetos_01.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha última modificación : 15/10/2018
+Objetivo : Utilización de una tabla
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Script HTML que integra las directivas AngularJS -->
+    <div ng-app="" ng-init="velocidades=[90, 105]">
+
+      <!-- Utilización del tipo de letra de caracteres Arial -->
+      <font face="Arial">
+
+        <!-- Introducir la velocidad autorizada -->
+        <!-- (numeración de los valores de 0 a n-1 en las tablas) -->
+        <p>Velocidad autorizada : <input type="text" ng-model="velocidades[0]"></p>
+
+        <!-- Introducir la velocidad comprobada -->
+        <p>Velocidad comprobada : <input type="text" ng-model="velocidades[1]"></p>
+
+        <!-- Evaluación del exceso de velocidad -->
+        <!-- Nota del autor: La expresión a evaluar se enmarca
+                  como sigue {{expresión}} -->
+        <!-- o introducida usando una directiva ng-bind -->
+        Velocidad autorizada : {{velocidades[0]}}<br />
+        Velocidad comprobada : {{velocidades[1]}}<br />
+        Exceso de velocidad : {{velocidades[1] - velocidades[0]}}<br />
+        Exceso de velocidad (via ng-bind) :
+        <span ng-bind="velocidades[1] - velocidades[0]"></span>
+
+      </font>
+
+    </div>
+
+  </body>
+
+</html>

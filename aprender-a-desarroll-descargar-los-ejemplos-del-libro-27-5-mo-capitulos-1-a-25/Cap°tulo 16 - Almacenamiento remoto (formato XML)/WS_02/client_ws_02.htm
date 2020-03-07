@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- NOMBRE DEL SCRIPT : client_ws_02.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Gestión Web Service NuSOAP
+Búsqueda de un coche en una BDD MySQL via NuSOAP
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type"
+		content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>WS_02</title>
+
+		<!-- Inicio script JavaScript -->
+		<script type='text/javascript'>
+		
+			/* Variables globales a cada función Javascript */
+			var httpRequest = null;
+			var valTimeout = null;
+			var url = "http://christian.vigouroux.online.fr/js_nusoap/servidor_ws_02.php";
+			var mensajeSOAP = null;
+
+			/* Función que verifica si se ha hecho una elección
+			en la lista desplegable */
+			function controlarOpcionLista(lista, mensajeAlerta) {
+				if (lista.value == "CODIGO") {
+					/* Visualización de un mensaje de alerta */
+					alert(mensajeAlerta);
+					/* Foco en el campo con error */
+					lista.focus();
+					/* Valor de retorno */
+					return false;
+				} else {
+					/* Llamada del servidor remoto */
+					appelerServidorRemoto(lista.value);
+					/* Valor de retorno */
+					return true;
+				}
+			}
+
+			/* Función llamarServidorRemoto */
+			function llamarServidorRemoto(codigo_coche) {
+				// alert("Codel coche : " + codigo_coche);
+
+				/* Mensaje SOAP a enviar al servidor */
+				mensajeSOAP = '<?xml version="1.0" encoding="ISO-8859-1"?>';
+				mensajeSOAP += '<SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"';
+				mensajeSOAP += ' xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"';
+				mensajeSOAP += ' xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"';
+				mensajeSOAP += ' xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:si="http://soapinterop.org/xsd">';
+				mensajeSOAP += '<SOAP-ENV:Body>';
+				mensajeSOAP += '<ns1:buscarCoche xmlns:ns1="http://christian.vigouroux.online.fr">';
+				mensajeSOAP += '<type xsi:type="xsd:string">' + codigo_coche + '</type>';
+				mensajeSOAP += '</ns1:buscarCoche>';
+				mensajeSOAP += '</SOAP-ENV:Body>';
+				mensajeSOAP += '</SOAP-ENV:Envelope>';
+				// alert("mensajeSOAP : " + mensajeSOAP);
+
+				/* Inicialización de un objeto de tipo XMLHttpRequest */
+				/* Nota del autor: XMLHttpRequest es un objeto ActiveX
+				o JavaScript que permite obtener
+				 datos en formato XML, JSON,
+				y también HTML o incluso texto simple
+				con ayuda de consultas HTTP. */
+				if (window.XMLHttpRequest) {
+					// Código para IE7+, Firefox, Chrome, Opera, Safari
+					httpRequest = new XMLHttpRequest();
+				} else {
+					// Código para IE6, IE5
+					httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+
+				/* Acceso al servidor SOAP */
+				httpRequest.open("POST", url, true);
+
+				/* Aplicación del método overrideMimeType
+				para indicar una respuesta del servidor SOAP
+				en formato texto o XML */
+				if (httpRequest.overrideMimeType) {
+					httpRequest.overrideMimeType("text/xml");
+				}
+
+				/* Preparación del encabezado del mensaje SOAP
+				(Content-Type posicionado a text/xml) */
+				/* Nota del autor: Cf https://en.wikipedia.org/wiki/List_of_HTTP_header_fields para los otros argumentos posibles */
+				httpRequest.setRequestHeader("Content-Type", "text/xml");
+
+				/* Enviar la consulta SOAP al servidor
+				con un timeout de 60000 ms (es decir, 60 segundos) */
+				/* Nota del autor: La consulta sera con error
+				cuando se alcance el plazo */
+				httpRequest.send(mensajeSOAP);
+				valTimeout = setTimeout("timeout(httpRequest);", 60000);
+
+				/* Parsea y copia la respuesta en el mapa HML
+				resultado tan pronto como se ha proporcionado
+				por el servidor SOAP */
+				httpRequest.onreadystatechange = parserDOM;
+
+			}
+
+			/* Función parserDOM */
+			function parserDOM() {
+				try {
+					/* Verifica si la consulta está terminada y con resultado satisfactorio */
+					if (httpRequest.readyState == 4) {
+						/* Verifica estado OK para la consulta http */
+						if (httpRequest.estado == 200) {
+							/* Implementación del timeout */
+							clearTimeout(valTimeout);
+							/* Recuperación de la respuesta */
+							var text = httpRequest.responseText;
+							/* Selecciona el parser para decodificar el flujo XML
+							enviado por el servidor */
+							if (window.DOMParser) {
+								// Código para IE7+, Firefox, Chrome,
+								// Opera, Safari
+								parser = new DOMParser();
+								xmlDoc = parser.parseFromString(text, "text/xml");
+							} else {
+								// Código para IE7+, Firefox, Chrome,
+								// Opera, Safari
+								xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+								xmlDoc.async = "false";
+								xmlDoc.loadXML(text);
+							}
+							/* Parsaado */
+							/* Nota del autor: El servidor SOAP renvía los valores
+							leídos en la tabla MySQL coches
+							en un flujo XML que tiene como etiqueta
+							<item> ... </item> */
+							var html = "";
+							for ( i = 0; i < xmlDoc.getElementosByTagName("item").length; i++) {
+								/* Nota del autor:
+								childNodes[0] designa el primer hijo
+								del elemento llamado item y nodeValue
+								representa el valor asociado */
+								if (i % 3 == 0) {
+									html += "Codigo : " + xmlDoc
+									.getElementosByTagName("item")[i]
+									.childNodes[0].nodeValue;
+								}
+								if (i % 3 == 1) {
+									html += "<br />Nombre : " + xmlDoc
+									.getElementosByTagName("item")[i]
+									.childNodes[0].nodeValue;
+								}
+								if (i % 3 == 2) {
+									html += "<br />Velocidad máxima : " + xmlDoc
+									.getElementosByTagName("item")[i]
+									.childNodes[0].nodeValue;
+								}
+							}
+							/* Situar el resultado del parseo
+							en la capa HTML resultado */
+							var capaResultado = document.getElementoById("resultado");
+							capaResultado.innerHTML = html;
+						}
+					}
+				} catch(e) {
+					/* Caso de error */
+					alert("Descripción del error : " + e.descripción);
+				}
+			}
+
+			/* Función timout */
+			function timeout(ajaxOBJ) {
+				/* Interrupción de la operación */
+				ajaxOBJ.abort();
+			}
+
+		</script>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - WS_02</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script type='text/javascript'>
+		
+			/* Visualización del nombre del script */
+			alert("WS_02");
+
+		</script>
+
+		<!-- Formulario de introducción de datos del código del coche a preguntar -->
+		<form name="formulario">
+			<!-- Lista desplegable de la selección -->
+			Código del coche :
+			<select
+			id="lista"
+			onchange="controlarOpcionLista(document.getElementoById('lista'), 'Por favor, seleccione un código')">
+				<option
+					value="CODIGO"
+					selected>Código coche </option>
+				<option
+					value="V001">V001 </option>
+				<option
+					value="V002">V002 </option>
+				<option
+					value="V003">V003 </option>
+			</select>
+		</form>
+
+		<!-- Capa de visualización del resultado en HTML -->
+		<br />
+		<br />
+		<br />
+		<br />
+		<div id="resultado"></div>
+
+	</body>
+
+</html>

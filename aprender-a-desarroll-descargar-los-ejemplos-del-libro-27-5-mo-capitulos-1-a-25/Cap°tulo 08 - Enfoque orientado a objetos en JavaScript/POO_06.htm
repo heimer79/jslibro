@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : POO_06.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Enfoque POO en Javascript
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>POO_06</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - POO_06</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script>
+		
+			/* Visualización del nombre del script */
+			alert("POO_06");
+
+			/* Definición de una función constructor de nombre Coche */
+			/* Nota del autor: El constructor aquí es vacío */
+			var Coche = function() {
+			};
+
+			/* Comprueba elexistence por defecto de un prototipo para todo constructor */
+			document.write("Prototipo del constructor : " + Coche.prototype);
+
+			/* Añadir un método zigzaguear al prototipo del constructor Coche */
+			Coche.prototype.zigzaguear = function() {
+				document.write("zigzaguea peligrosamente</br>");
+			};
+
+			/* Inicialización de un objeto simca1100 con el constructor Coche */
+			var simca1100 = new Coche();
+
+			/* Llamada al método zigzaguear del objeto simca1100 accesible con el prototipo del constructor Coche */
+			document.write("</br>Que fait la simca1100 ? Elle  ");
+			simca1100.zigzaguear();
+
+			/* Inicialización de un objeto renault12 con el constructor Coche */
+			var renault12 = new Coche();
+
+			/* Verifica método zigzaguear compartido o no entre los objetos simca1100 y renault12 */
+			if (simca1100.zigzaguear == renault12.zigzaguear) {
+				document.write("Método zigzaguear compartido por los objetos simca1100 y renault12</br>");
+			} else {
+				document.write("Método zigzaguear no compartido por los objetos simca1100 y renault12</br>");
+			}
+
+		</script>
+
+	</body>
+
+</html>

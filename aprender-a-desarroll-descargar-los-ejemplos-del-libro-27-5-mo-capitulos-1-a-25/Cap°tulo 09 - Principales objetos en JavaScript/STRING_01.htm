@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : STRING_01.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Gestión del objeto nativo String
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>STRING_01</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - STRING_01</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script type="text/javascript">
+			
+			/* Visualización del nombre del script */
+			alert("STRING_01");
+
+			/*
+			 Gestión del objeto nativo String
+			 */
+
+			/* Definición de variables de tipo String */
+			var apellido = new String("Christian");
+			var nombre = "VIGOUROUX";
+			document.write("Apellido : " + apellido);
+			document.write("</br>Nombre : " + nombre);
+
+			/* Inicial del apellido */
+			document.write("</br>Inicial del apellido : " + apellido.charAt(0));
+
+			/* Caracter Unicode (posición en tabla ASCII) de la inicial del nombre */
+			document.write("</br>Caracter Unicode (posición en tabla ASCII) de la inicial del nombre : " + nombre.charCodeAt(0));
+
+			/* Concatenación del apellido y del nombre */
+			var identidad = apellido.concat(" ");
+			identidad = identidad.concat(nombre);
+			document.write("</br>Apellido & Nombre : " + identidad);
+
+			/* Posición de la primera letra U" en el nombre (atención a la numeración empieza en 0) */
+			var posicion_primera_u = nombre.indexOf("U") + 1;
+			document.write("</br>La primera 'U' del nombre está en posición : " + posicion_primera_u);
+
+			/* Posición de la última letra "U" en el nombre (atención la numeración empieza en 0) */
+			var posicion_ultima_u = nombre.lastIndexOf("U") + 1;
+			document.write("</br>La última 'U' del nombre está en posición : " + posicion_ultima_u);
+
+			/* Método match (Cf expresiones regulares) */
+
+			/* Ubicación de una cadena de caracteres */
+			var origenNombrebre = nombre.replace("ROUX", "REUX");
+			document.write("</br>Origen del nombre : " + origenNombre);
+
+			/* Método search (Cf expresiones regulares) */
+
+			/* Extracción de una subcadena por el método slice(posicion_inicio, posicion_fin - 1) */
+			var apodo = nombre.slice(0, 4);
+			document.write("</br>Apodo (método slice) : " + apodo);
+
+			/* Extracción de una subcadena por el método substr(posicion_inicio, longitud) */
+			apodo = nombre.substr(0, 4);
+			document.write("</br>Apodo (método substr) : " + apodo);
+
+			/* Extracción de una subcadena por el método substring(posicion_inicio, posicion_fin - 1) */
+			apodo = nombre.substring(0, 4);
+			document.write("</br>Apodo (método substring) : " + apodo);
+
+			/* Añade una frase en la tabla */
+			var autor = "Christian VIGOUROUX es el auteur de este libro";
+			var tablaAutor = autor.split(" ");
+			document.write("</br>El nombre del autor de este libro : " + tablaAutor[1]);
+
+			/* Conversión en mayúsculas */
+			document.write("</br>El apellido en mayúsculas : " + apellido.toUpperCase());
+
+			/* Conversión en minúsculas */
+			document.write("</br>El nombre en minúsculas : " + nombre.toLowerCase());
+
+			/* Eliminación de los espacios no significativos al inicio y fin de cadena de la caracteres */
+			var identidad = "                    Christian VIGOUROUX                    ";
+			document.write("</br>Identidad con espacios no significativos : " + "[" + identidad + "]");
+			document.write("</br>Identidad sin espacios no significativos : " + "[" + identidad.trim() + "]");
+
+		</script>
+
+	</body>
+
+</html>

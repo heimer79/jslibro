@@ -1,0 +1,36 @@
+<!-- Encabezado de la página -->
+<ion-header>
+  
+  <!-- Barra de navegación -->
+  <ion-navbar color="appbase">
+    
+    <!-- Título de la página -->
+    <ion-title>
+      Ionic 3 - Gestión del Portapapeles
+    </ion-title>
+    
+  </ion-navbar>
+
+</ion-header>
+
+<!-- Contenido de la página -->
+<ion-content>
+
+  <!-- Botones desencadenadores -->
+  <br/>
+  <button
+    ion-button block color="appbase"
+    (click)="copiarHaciaPortapapeles()">
+    Copiar al Portapapeles
+  </button>
+  <br/>
+  <button
+    ion-button block color="appbase"
+    (click)="copiarDesdePortapapeles()">
+    Pegar desde el Portapapeles
+  </button>
+  
+  <!-- Capa visualizacionControl -->
+  <ion-card id="visualizacionControl"></ion-card>
+
+</ion-content>

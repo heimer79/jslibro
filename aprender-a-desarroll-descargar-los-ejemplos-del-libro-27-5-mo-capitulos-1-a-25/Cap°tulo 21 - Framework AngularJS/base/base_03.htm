@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : base_03.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha última modificación : 15/10/2018
+Objetivo : Ejemplo de uso de la directiva ng-init
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Sección DIV que integra las directivas AngularJS -->
+    <div ng-app="" ng-init="marca='BMW'">
+
+      <!-- Utilización del tipo de letra de caracteres Arial -->
+      <font face="Arial">
+
+        <!-- Mensaje de confirmación -->
+        <!-- Nota del autor: ng_bind hace el enlace con la variable marca
+                  inicializada via la directiva ng-init -->
+        Su marca preferida es <span ng-bind="marca"></span>
+
+      </font>
+
+    </div>
+
+  </body>
+
+</html>

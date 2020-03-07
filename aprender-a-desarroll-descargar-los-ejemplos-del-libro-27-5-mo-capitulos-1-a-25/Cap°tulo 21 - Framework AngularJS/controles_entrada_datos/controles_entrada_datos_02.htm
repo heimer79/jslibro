@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : controle_introducida_02.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : Control de introducción de datos en una zona de texto (tipo email)
+-->
+
+<!-- Etiqueta HTML -->
+<html lang="es-ES">
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+  </head>
+
+  <!-- Sección BODY -->
+  <body ng-app="">
+
+    <!-- Utilización del tipo de letra de caracteres Arial -->
+    <font face="Arial">
+
+      <!-- Visualización del formulario -->
+      <form name="minFormulario">
+        Dirección mail :
+        <input type="email" name="miEmail" ng-model="miEmail" required>
+      </form>
+
+      <!-- Visualización de control -->
+      <br />
+      Resumen de introducción de datos : {{minFormulario.miEmail.$valid}}
+
+    </font>
+
+  </body>
+
+</html>

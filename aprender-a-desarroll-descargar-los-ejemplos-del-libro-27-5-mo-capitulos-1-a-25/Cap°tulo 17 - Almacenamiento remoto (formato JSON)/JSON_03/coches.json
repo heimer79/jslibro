@@ -1,0 +1,5 @@
+{ 
+  "coche1":{ "codigo":"V001", "nombre":"Porsche 930 Turbo", "velocidad_maxi":290 },
+  "coche2":{ "codigo":"V002", "nombre":"Porsche 964 Turbo", "velocidad_maxi":300 },
+  "coche3":{ "codigo":"V003", "nombre":"Ferrari 430", "velocidad_maxi":320 } 
+}

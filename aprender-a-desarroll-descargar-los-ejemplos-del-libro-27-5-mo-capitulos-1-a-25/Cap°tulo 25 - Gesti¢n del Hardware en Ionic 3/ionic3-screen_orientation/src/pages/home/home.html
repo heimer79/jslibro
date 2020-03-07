@@ -1,0 +1,37 @@
+<!-- Encabezado de la página -->
+<ion-header>
+
+  <!-- Barra de navegación -->
+  <ion-navbar color="primary">
+
+    <!-- Título de la página -->	    
+    <ion-title>
+      Ionic 3 - Screen orientation
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+<!-- Contenido de la página -->
+<ion-content padding>
+
+  <!-- Lista de las botones de la aplicación -->
+  <button ion-button
+    (click)="bloquearPaisaje()">
+    Bloqueo en modo Paisaje
+  </button><br/>
+  <button ion-button
+    (click)="bloqueRetrato()">
+    Bloqueo en modo Retrato
+  </button><br/>
+  <button ion-button
+    (click)="desbloquear()">
+      Desbloqueo
+  </button><br/>
+  <button ion-button
+    (click)="buscarOrientacion()">
+    Buscar orientación actual
+  </button>
+  
+</ion-content>

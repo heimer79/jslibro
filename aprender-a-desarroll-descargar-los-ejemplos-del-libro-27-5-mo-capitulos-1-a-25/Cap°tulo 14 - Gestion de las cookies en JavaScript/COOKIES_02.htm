@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : COOKIES_02.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Gestión de las cookies en Javascript (Lectura de la cookie)
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>COOKIES_02</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - COOKIES_02</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script>
+		
+			/* Visualización del nombre del script */
+			alert("COOKIES_02");
+
+			/* Definición de la función Javascript de lectura de una cookie */
+			function lecturaCookie(nombreCookie) {
+				/* Verifica la presencia de la cookie */
+				if (document.cookie.length == 0) {
+					/* Valor de retorno null */
+					return null;
+				} else {
+					/* Inserción en tabla tabElementos de los elementos de la cookie */
+					/* Nota del autor: Nos basamos en el separador punto-coma */
+					var tabElementos = document.cookie.split(";");
+					/* Búsqueda del = que separa el nombre del elemento
+					 del valor del elemento para el primer elemento (nº 0) */
+					var positionEgal = tabElementos[0].indexOf("=", 0);
+					/* Determinación del nombre del elemento */
+					var nombreElemento = tabElementos[0].substring(0, positionEgal);
+					/* Determinación del valor del elemento */
+					var valorElemento = tabElementos[0].substring(positionEgal + 1);
+					/* Si el nombre del elemento contiene 
+					 el nombre correcto de la cookie */
+					if (nombreElemento == nombreCookie) {
+						/* Retorno del valor del elemento
+						 (con reimplementación de los caracteres especiales) */
+						/* Nota del autor: Este elemento contiene normalmente Ediciones ENI */
+						return unescape(valorElemento);
+					}
+					/* Valor de retorno */
+					return null;
+				}
+			}
+
+			/* Lectura de una cookie mediante una llamada de la función lecturaCookie */
+			/* Nota del autor: El cookie tiene como valor "Ediciones ENI" en nuestro caso. */
+			if (lecturaCookie("miCookie") == null) {
+				document.write("La cookie miCookie no se ha podido encontrar");
+			} else {
+				document.write("La cookie miCookie tiene como valor : " + lecturaCookie("miCookie"));
+			}
+
+		</script>
+
+	</body>
+
+</html>

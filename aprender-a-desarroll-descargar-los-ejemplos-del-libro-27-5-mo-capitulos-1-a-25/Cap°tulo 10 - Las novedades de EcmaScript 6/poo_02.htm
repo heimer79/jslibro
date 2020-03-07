@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : poo_02.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : "POO" en EcmaScript 5 (sobrecarga de un método)
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Utilización del tipo de letra de caracteres Arial -->
+    <font face="Arial">
+            
+      <!-- Visualización del título del script -->
+      <h3>Ecmacript 5 & 6 : Sobrecarga de un método - Script poo_02.htm</h3>
+
+      <!-- Script JavaScript -->
+      <script>
+
+        /* Definición de una función constructor de nombre Coche */
+        /* Nota del autor: El constructor aquí es vacío */
+        var Coche = function() {};
+          
+        /* Añadir un método bateria al prototipo del constructor Coche */
+        Coche.prototype.bateria = function()
+        {
+          document.write("bateria<br />");
+        };
+
+        /* Inicialización de un objeto simca1100 con el constructor Coche */ 
+        var simca1100 = new Coche();
+
+        /* Llamada al método bateria del objeto simca1100 accesible /*
+        /* con el prototipo del constructor Coche */
+        document.write("El simca1100 ");
+        simca1100.bateria();
+
+        /* Inicialización de un objeto renault12 con el constructor Coche */ 
+        var renault12 = new Coche();
+
+        /* Modificación (sobrecarga) del método bateria para el objeto simca1100 */
+        simca1100.bateria = function()
+        {
+          document.write("sin batería bruscamente<br />");
+        };
+
+        /* Llamada al método bateria (sobrecargado) del objeto simca1100 */
+        document.write("El simca1100 ");
+        simca1100.bateria();
+
+        /* Llamada al método bateria (no sobrecargado) del objeto renault12 */
+        document.write("El renault12 ");
+        renault12.bateria();
+
+      </script>
+
+    </font>
+
+  </body>
+
+</html>

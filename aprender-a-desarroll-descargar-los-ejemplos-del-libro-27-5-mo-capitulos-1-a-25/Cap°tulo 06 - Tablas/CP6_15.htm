@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : CP6_15.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Sea la tabla tb de 2 dimensiones, con 4 líneas y 5 columnas. Realizar las siguientes operaciones:
+        - Introducir por teclado los valores en las 3 primera líneas y las 4 primeras columnas
+          (se conserva la última línea y la última columna libres para los totales de líneas y columnas)
+        - Sumar las columnas en la última línea y las líneas en la última columna
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>CP6_15</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - Ejercicio CP6_15</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script>
+			
+			/* Visualización del nombre del script */
+			alert("Ejercicio CP6_15");
+
+			/* Declaración de variables locales */
+			var tb = new Array(5);
+			var numLinea, numColumna;
+			var valor;
+
+			/* Declaración de 5 "columnas" por "línea" para la tabla tb */
+			for (var numLinea = 1; numLinea < tb.length; numLinea++) {
+				/* Creación de las "columnas" (númeradas de 0 a 5) */
+				tb[numLinea] = new Array(6);
+			}
+
+			/* Inicialización de la tabla tb (3 líneas * 4 columnas) para introducir por el teclado */
+			for (numLinea = 1; numLinea <= 3; numLinea++) {
+				for (numColumna = 1; numColumna <= 4; numColumna++) {
+					valor = parseInt(prompt("tabla[" + numLinea + "][" + numColumna + "] = "));
+					tb[numLinea][numColumna] = valor;
+				}
+			}
+
+			/* Puesta a cero de los totales en línea nº4 */
+			for (numColumna = 1; numColumna <= 5; numColumna++) {
+				tb[4][numColumna] = 0;
+			}
+
+			/* Puesta a cero de los totales en columna nº5 */
+			for (numLinea = 1; numLinea <= 4; numLinea++) {
+				tb[numLinea][5] = 0;
+			}
+
+			/* Determinación de los totales en línea nº4 y en columna nº5 */
+			for (numLinea = 1; numLinea <= 3; numLinea++) {
+				for (numColumna = 1; numColumna <= 4; numColumna++) {
+					/* Totalización en línea nº4 */
+					tb[4][numColumna] = tb[4][numColumna] + tb[numLinea][numColumna];
+					/* Totalización en columna nº5 */
+					tb[numLinea][5] = tb[numLinea][5] + tb[numLinea][numColumna];
+					/* Totalización general en línea nº4-columna nº5 */
+					tb[4][5] = tb[4][5] + tb[numLinea][numColumna];
+				}
+			}
+
+			/* Visualización del total general */
+			document.write("Total general en tb[4][5] = " + tb[4][5]);
+
+		</script>
+
+	</body>
+
+</html>

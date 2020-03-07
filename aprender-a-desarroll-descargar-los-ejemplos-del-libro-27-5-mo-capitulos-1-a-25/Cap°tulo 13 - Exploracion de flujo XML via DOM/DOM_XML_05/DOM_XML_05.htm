@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : DOM_XML_05.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Gestión DOM - Lista de los campos (nodos) de cada coche (archivo coches.xml)
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>DOM_XML_05</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - DOM_XML_05</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script type="text/javascript">
+		
+			/* Visualización del nombre del script */
+			alert("DOM_XML_05");
+
+			/* Creación de un objeto XMLHttpRequest para intercambiar datos con el servidor en formato texto, XML o JSON */
+			/* Nota del autor: Los archivos XML se parsean automáticamente por el objeto y accesibles por los métodos del DOM */
+			if (window.XMLHttpRequest) {
+				// Código específico para los navegadores IE7+, Firefox, Chrome, Opera, Safari
+				var xmlhttp = new XMLHttpRequest();
+			} else {
+				// Código específico para los navegadores IE6, IE5
+				var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+
+			/* Apertura del archivo XML coches.xml en modo síncrono (false)*/
+			xmlhttp.open("GET", "coches.xml", false);
+
+			/* Envío de la consulta HTTP al servidor  */
+			xmlhttp.send();
+
+			/* Creación del documento XML en memoria */
+			var xmlDoc = xmlhttp.responseXML;
+
+			/*
+			Visualización de lista de los campos (nodos) de cada coche
+			Nota del autor: La lista es basada en estelle del primer coche
+			*/
+			/* Visualización del título de la lista */
+			document.write("Lista de los campos (nodos) de cada coche :<br />")
+			/* Constitution de la lista de los nodos hijos
+			de coche (basada en el primer coche) */
+			listaCamposCoche = xmlDoc.getElementosByTagName("coche")[0].childNodes;
+			/* Inicialización del valor del primer hijo (marca) */
+			campoCoche = xmlDoc.getElementosByTagName("coche")[0].firstChild;
+			/* Recorrido de los hijos */
+			for (i = 0; i < listaCamposCoche.length; i++) {
+				/* Comprueba el tipo del nodo para solo visualizar los nodos elementos */
+				/*
+				nodeType : 1  -> nodo elemento
+				nodeType : 2  -> nodo atributo
+				nodeType : 3  -> nodo texto
+				nodeType : 4  -> nodo de sección CDATA
+				nodeType : 5  -> nodo de referencia a una entidad
+				nodeType : 6  -> nodo de entidad
+				nodeType : 7  -> nodo de instrucción de tratamiento
+				nodeType : 8  -> nodo de comentario
+				nodeType : 9  -> nodo de documento
+				nodeType : 10  -> nodo de tipo de documento
+				nodeType : 11  -> nodo de fragmento de documento
+				nodeType : 12  -> nodo de notación
+				*/
+				if (campoCoche.nodeType == 1) {
+					document.write(" - " + campoCoche.nodeName + "<br />");
+				}
+				/* Pasar al campo siguiente */
+				campoCoche = campoCoche.nextSibling;
+			}
+
+			/*
+			Visualización del nombre de sites Web que describen
+			el segundo coche (númerado 1)
+			*/
+			document.write("<br />");
+			document.write("Lista de los sites Web que describen le segunda coche :<br />")
+			listaCamposCoche = xmlDoc.getElementosByTagName("coche")[1].childNodes;
+			campoCoche = xmlDoc.getElementosByTagName("coche")[1].firstChild;
+			for (i = 0; i < listaCamposCoche.length; i++) {
+				if (campoCoche.nodeType == 1 && campoCoche.nodeName == "sitio_web") {
+					document.write(" - " + campoCoche.nodeName + " : " + campoCoche.childNodes[0].nodeValue + "<br />");
+				}
+				/* Pasar al campo siguiente */
+				campoCoche = campoCoche.nextSibling;
+			}
+
+		</script>
+
+	</body>
+
+</html>

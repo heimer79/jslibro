@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : WINDOW_05.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Gestión del histórico de páginas
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>WINDOW_05</title>
+
+		<!-- Inicio script JavaScript -->
+		<script type="text/javascript">
+		
+			/* Función accederWINDOW_06 */
+			function accederWINDOW_06() {
+				/* Acceso a la página accederWINDOW_05.htm */
+				miVentana = window.open("WINDOW_06.htm", "_self");
+			}
+
+		</script>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - WINDOW_05</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script type="text/javascript">
+		
+			/* Visualización del nombre del script */
+			alert("WINDOW_05");
+
+		</script>
+
+		<!-- Acceso a la página WINDOW_06.htm -->
+		<form post="WINDOW_06.htm">
+			<input
+				type="button"
+				value="Acceso a la página WINDOW_06.htm"
+				onclick="accederWINDOW_06()"
+			/>
+		</form>
+
+	</body>
+
+</html>

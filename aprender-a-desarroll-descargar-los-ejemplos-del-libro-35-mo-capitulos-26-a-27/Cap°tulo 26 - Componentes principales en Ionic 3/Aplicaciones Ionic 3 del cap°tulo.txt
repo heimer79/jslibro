@@ -1,0 +1,6 @@
+ionic3-alert_basic
+ionic3-alert_checkbox
+ionic3-alert_confirm
+ionic3-alert_prompt
+ionic3-alert_radio
+ionic3-paso_argumentos

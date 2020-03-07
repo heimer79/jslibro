@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : JSON_04.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Utilización de JSON
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type"
+		content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>JSON_04</title>
+
+		<!-- Inicio script JavaScript -->
+		<script type="text/javascript">
+			
+			/* Función ajax_get_json */
+			function ajax_get_json() {
+
+				/* Asociación de la variable resultado a la capa
+				de visualización capaResultado */
+				var resultado = document.getElementoById("capaResultado");
+
+				/* Inicialización de un objeto de tipo XMLHttpRequest
+				/* Nota del autor: XMLHttpRequest es un objeto ActiveX
+				o JavaScript que permite obtener los datos
+				en formato XML, JSON, pero también HTML o incluso texto
+				simple con ayuda de consultas HTTP. */
+				if (window.XMLHttpRequest) {
+					// Código para IE7+, Firefox, Chrome, Opera, Safari
+					httpRequest = new XMLHttpRequest();
+				} else {
+					// Código para IE6, IE5
+					httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+
+				/* Apertura del archivo coches.json
+				con el script PHP servidorJSON.php*/
+				/* true : modo asíncrono -> el flujo debe estar disponible
+				completamente antes de su tratamiento */
+				httpRequest.open("GET", "servidorJSON.php", true);
+
+				/* Definición del tipo de flujo */
+				httpRequest.setRequestHeader("Content-type", "application/json");
+
+				/* Tratamiento realizado tan pronto como el flujo está disponible */
+				httpRequest.onreadystatechange = function() {
+					/* Verifica si la consulta está terminada y verifica estado OK */
+					if (httpRequest.readyState == 4 && httpRequest.estado == 200) {
+						/* Visualizaciones de control */
+						alert("responseText : " + httpRequest.responseText);
+						/* Conversión del flujo JSON
+						 en objetos Javascript */
+						var datosJSON = JSON.parse(httpRequest.responseText);
+						/* Inicialización de la variable resultado */
+						resultado.innerHTML = "";
+						/* Recorrido de los objetos Javascript */
+						for (var objeto in datosJSON) {
+							/* Concatenación del resultado */
+							resultado.innerHTML += "Código coche : " + datosJSON[objeto].codigo_coche + "<br />";
+
+							resultado.innerHTML += "Nombre : " + datosJSON[objeto].nombre_coche + "<br />";
+
+							resultado.innerHTML += "Velocidad máxima : " + datosJSON[objeto].velocidad_maxima_coche + "<hr />";
+						}
+					}
+				}
+				/* Sin envío de argumentos a través
+				 de la consulta XMLHttpRequest */
+				httpRequest.send(null);
+
+				/* Mensaje que se muestra esperando la operación */
+				/* (recuperación de los datos desde la tabla
+				 MySQL coches) */
+				resultado.innerHTML = "A la espera del tratamiento JSON ...";
+
+			}
+
+		</script>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - JSON_04</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script type="text/javascript">
+		
+			/* Visualización del nombre del script */
+			alert("JSON_04");
+
+		</script>
+
+		<!-- Capa de visualización del resultado -->
+		<div id="capaResultado"></div>
+
+		<!-- Llamada a la función JSON ajax_get_json -->
+		<script type="text/javascript">
+			ajax_get_json();
+		</script>
+
+	</body>
+
+</html>

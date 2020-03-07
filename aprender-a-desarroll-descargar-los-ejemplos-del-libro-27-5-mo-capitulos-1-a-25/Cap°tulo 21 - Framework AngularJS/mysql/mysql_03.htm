@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : mysql_03.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : Añadir un nuevo registro en la tabla MySQL coches
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+    <!-- Llamada del controlador de la aplicación (archivo Javascript externo) -->
+    <script src="mysql_03.js" type="text/javascript"></script>
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Script HTML que integra las directivas AngularJS -->
+    <div ng-app="miAplicacion" ng-controller="miControlador">
+
+      <!-- Utilización del tipo de letra de caracteres Arial -->
+      <font face="Arial">
+
+        <!-- Introducir la marca a través de un control HTML de tipo input -->
+        <p>Marca : <input type="text" ng-model="marcaCoche"></p>
+
+        <!-- Introducir el modelo a través de un control HTML de tipo input -->
+        <p>Modelo : <input type="text" ng-model="modeloCoche"></p>
+
+        <!-- Introducir el país a través de un control HTML de tipo input -->
+        <p>País : <input type="text" ng-model="paisCoche"></p>
+
+        <!-- Validación a través de un control HTML de tipo button -->
+        <button type="submit"
+          ng-click="agregarCoche(marcaCoche, modeloCoche, paisCoche)">
+          Registro en la BDD MySQL
+        </button>
+
+      </font>
+
+    </div>
+
+  </body>
+
+</html>

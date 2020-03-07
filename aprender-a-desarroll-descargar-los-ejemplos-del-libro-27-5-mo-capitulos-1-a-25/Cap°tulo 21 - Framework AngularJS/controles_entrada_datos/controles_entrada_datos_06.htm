@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : controle_introducida_06.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : Lista desplegable basada en una tabla de datos
+        (3 campos para cada registro)
+-->
+
+<!-- Etiqueta HTML -->
+<html lang="es-ES">
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Script HTML que integra las directivas AngularJS -->
+    <div ng-app="miAplicacion" ng-controller="miControlador">
+
+      <!-- Utilización del tipo de letra de caracteres Arial -->
+      <font face="Arial">
+
+        <!-- Selección de un coche en una lista desplegable -->
+        <p>Seleccione un coche : </p>
+        <select
+          ng-model="cocheSeleccionado"
+          ng-options="coche as (coche.marca + ' ' + coche.modelo)
+          for coche in coches">
+        </select>
+
+        <!-- Visualización del coche seleccionado -->
+        <!-- Nota del autor: {{cocheSeleccionado}} contiene
+                  lo 3 campos (marca, modelo y paí) -->
+        <br/ ><br/ ><br/ ><br/ ><br/ >
+        Coche seleccionado :</b><br/ >
+        Coche : {{cocheSeleccionado}}<br/ >
+        Marca : {{cocheSeleccionado.marca}}<br/ >
+        Modelo : {{cocheSeleccionado.modelo}}<br/ >
+        País : {{cocheSeleccionado.pais}}
+
+      </font>
+
+    </div>
+
+    <!-- Módulo y controlador AngularJS -->
+    <script>
+
+      // Definición del módulo miAplicacion
+      var application = angular.module('miAplicacion', []);
+
+      // Definición del controlador miControlador
+      application.controller('miControlador', function($scope) {
+        // Definición de la tabla de los elementos de la lista (coches)
+        $scope.coches = [
+          {marca : "Porsche", modelo : "911", pais : "Alemania"},
+          {marca : "Ferrari", modelo : "Testarossa", pais : "Italia"},
+          {marca : "BMW", modelo : "M5", pais : "Alemania"}
+        ];
+      });
+
+    </script>
+
+  </body>
+
+</html>

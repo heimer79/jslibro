@@ -1,0 +1,24 @@
+<!-- Encabezado de la página -->
+<ion-header>
+  
+  <!-- Barra de navegación -->
+  <ion-navbar>
+    <!-- Título de la página -->
+    <ion-title>Ionic 3 - Alerta Prompt</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<!-- Contenido de la página -->
+<ion-content padding>
+
+  <!--- Botón de visualización de la ventana modal -->
+  <button
+    ion-button color="secondary" block
+    (click)="visualizarVentanaModal()">
+    Ventana modal (alerta prompt)
+  </button>
+
+   <!-- Capa visualizacionResultado -->
+  <div id="visualizacionResultado"></div>
+
+</ion-content>

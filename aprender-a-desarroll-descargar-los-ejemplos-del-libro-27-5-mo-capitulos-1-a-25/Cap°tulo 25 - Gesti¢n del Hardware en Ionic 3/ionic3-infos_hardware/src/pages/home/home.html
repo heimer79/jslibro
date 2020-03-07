@@ -1,0 +1,49 @@
+<!-- Encabezado de la página -->
+<ion-header>
+
+	<!-- Barra de navegación -->  
+  <ion-navbar color="primary">
+
+    <!-- Título de la página -->	
+    <ion-title>
+      Ionic 3 - Informations hardware
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+<!-- Contenido de la página -->
+<ion-content padding>
+  
+  <!-- Título -->
+  <b>Características técnicas del periférico :</b>
+
+  <!-- identificador del periférico -->
+  <p>Número del periférico : {{ id }}</p>
+  
+  <!-- Modelo -->
+  <p>Modelo : {{ modelo }}</p>
+  
+  <!-- Información de Cordova -->
+  <p>Información de Cordova : {{ cordova }}</p>
+  
+  <!-- Información de la plataforma -->
+  <p>Información de la plataforma : {{ plataforma }}</p>
+  
+  <!-- Versión -->
+  <p>Versión : {{ version }}</p>
+  
+  <!-- Fabricante -->
+  <p>Fabricante : {{ fabricante }}</p>
+  
+  <!-- Número de serie -->
+  <p>Número de serie : {{ numeroSerie }}</p>
+  
+  <!-- Aparato virtual o no -->
+  <p>Aparato virtual o no : {{ modoEmulacion }}</p>
+  
+  <!-- Botón de lanzamiento de la función recupInfos -->
+  <button ion-button (click)="recupInfos()">Características</button>
+  
+</ion-content>

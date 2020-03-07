@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : POO_09.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Enfoque POO en Javascript
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>POO_09</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - POO_09</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script>
+		
+			/* Visualización del nombre del script */
+			alert("POO_09");
+
+			/* Definición de una función constructor de nombre Vehiculo */
+			/* Nota del autor: El constructor aquí es vacío */
+			var Vehiculo = function() {
+			};
+
+			/* Añadir un método acelerar al prototipo del constructor Vehiculo */
+			Vehiculo.prototype.acelerar = function() {
+				document.write("acelera</br>");
+			};
+
+			/* Añadir un método frenar al prototipo del constructor Vehiculo */
+			Vehiculo.prototype.frenar = function() {
+				document.write("frena</br>");
+			};
+
+			/* Definición de una función constructor de nombre Coche */
+			/* Nota del autor: El constructor aquí es vacío */
+			var Coche = function() {
+			};
+
+			/* Copia todos los elementos (atributos y métodos) del prototipo del constructor Vehiculo */
+			/* en el prototipo del constructor Coche */
+			/* Nota del autor: Sobre todo no hacer Coche.prototype = Vehiculo.prototype porque en este caso, el prototipo se compartirá */
+			for (clave in Vehiculo.prototype) {
+				Coche.prototype[clave] = Vehiculo.prototype[clave];
+			}
+
+			/* Sobrecarga del prototipo del constructor Coche (agregación de un método frenar) */
+			Coche.prototype.frenar = function() {
+				document.write("frena");
+			};
+
+			/* Inicialización de un objeto simca1100 con el constructor Coche */
+			var simca1100 = new Coche();
+
+			/* Llamada al método acelerar del objeto simca1100 accesible desde la copia del prototipo del constructor Vehiculo) */
+			document.write("El simca1100 ");
+			simca1100.acelerar();
+
+			/* Llamada al método frenar del objeto simca1100 accesible con el prototipo del constructor Coche */
+			document.write("El simca1100 ");
+			simca1100.frenar();
+
+		</script>
+
+	</body>
+
+</html>

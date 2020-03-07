@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : controle_introducida_03.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : Control de introducción de datos en una zona de texto obligatorio
+        con una visualización de un mensaje de error si el campo se deja vide
+        (pierde el foco)
+-->
+
+<!-- Etiqueta HTML -->
+<html lang="es-ES">
+
+  <!-- Sección HEAD -->
+  <head>
+  <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+  </head>
+
+  <!-- Sección BODY -->
+  <body ng-app="">
+
+    <!-- Utilización del tipo de letra de caracteres Arial -->
+    <font face="Arial">
+    
+      <!-- Visualización del formulario -->
+      <form name="minFormulario">
+
+        <!-- Introducir la marca
+        con visualización de la nota "Introducción obligatoria de la marca"
+        si el campo se deja vacío (pérdida del foco) -->
+        Marca :
+        <input name="marcaCoche" ng-model="marcaCoche" required>
+        <span
+          ng-show="minFormulario.marcaCoche.$touched
+          && minFormulario.marcaCoche.$invalid">
+          <b>Introducción obligatoria de la marca</b>
+        </span>
+
+        <!-- Introducir el modelo -->
+       <br>Modelo :
+       <input name="modeloCoche" ng-model="modeloCoche" required>
+
+        <!-- Introducir el pais -->
+        <br>País :
+        <input name="marcaPreferida" ng-model="marcaPreferida" required>
+
+      </font>
+
+    </form>
+
+  </body>
+
+</html>

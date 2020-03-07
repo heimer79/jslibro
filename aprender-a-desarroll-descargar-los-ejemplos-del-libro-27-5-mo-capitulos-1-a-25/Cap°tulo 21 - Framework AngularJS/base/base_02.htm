@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : base_02.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha última modificación : 15/10/2018
+Objetivo : Ejemplo con de uso de la directiva ng-bind
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Sección DIV que integra las directivas AngularJS -->
+    <div ng-app="">
+
+      <!-- Utilización del tipo de letra de caracteres Arial -->
+      <font face="Arial">
+
+        <!-- Introducir la marca preferida de coches deportivos -->
+        <p>Marca preferida de coches deportivos : 
+        <input type="text" ng-model="marca"></p>
+
+        <!-- Mensaje de confirmación -->
+        <!-- Nota del autor: ng_bind hace el enlace con la variable marca -->
+        Su marca preferida es <span ng-bind="marca"></span>
+
+      </font>
+
+    </div>
+
+  </body>
+
+</html>

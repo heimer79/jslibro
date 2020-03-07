@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : DOM_XML_06.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Gestión DOM - Ubicación de un valor de nodo (archivo coches.xml)
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>DOM_XML_06</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - DOM_XML_06</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script type="text/javascript">
+		
+			/* Visualización del nombre del script */
+			alert("DOM_XML_06");
+
+			/* Creación de un objeto XMLHttpRequest para intercambiar datos con el servidor en formato texto, XML o JSON */
+			/* Nota del autor: Los archivos XML se parsean automáticamente por el objeto y accesibles por los métodos del DOM */
+			if (window.XMLHttpRequest) {
+				// Código específico para los navegadores IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp = new XMLHttpRequest();
+			} else {
+				// Código específico para los navegadores IE6, IE5
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+
+			/* Apertura del archivo XML coches.xml en modo síncrono (false)*/
+			xmlhttp.open("GET", "coches.xml", false);
+
+			/* Envío de la consulta HTTP al servidor  */
+			xmlhttp.send();
+
+			/* Creación del documento XML en memoria */
+			xmlDoc = xmlhttp.responseXML;
+
+			/* Ubicación de un valor de nodo (marca) en el primer coche */
+			marcaCoche = xmlDoc.getElementosByTagName("marca")[0].childNodes[0];
+			marcaCoche.nodeValue = "FERRARI ITALIA";
+
+			/* Control de la ubicación realizada */
+			marcaCoche = xmlDoc.getElementosByTagName("marca")[0].childNodes[0];
+			textoMarcaCoche = marcaCoche.nodeValue;
+			document.write("La marca del primer coche es desde ahora : " + textoMarcaCoche);
+
+		</script>
+
+	</body>
+
+</html>

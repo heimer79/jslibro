@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : controlador_03.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : Controlador que incorpora un servicio desarrollado por el autor
+-->
+
+<!-- Etiqueta HTML -->
+<html lang="es-ES">
+
+    <!-- Sección HEAD -->
+    <head>
+        <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">     
+        <!-- Llamada al Framework Angular -->
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+        </script>
+    </head>
+
+    <!-- Sección BODY que integra las directivas Angular -->
+    <body ng-app="miAplicacion">
+
+        <!-- Utilización del tipo de letra de caracteres Arial -->
+        <font face="Arial">
+            
+            <!-- División gestionada por el controlador miControlador -->
+            <div ng-controller="miControlador">
+
+                <!-- Botón para acelerar -->
+                <button ng-click="acelerar()">Acelerar (clic en el botón)</button>
+
+                <!-- Visualización de la variable Angular velocidadDelContador -->
+                <br><br>
+                Velocidad del contador : {{velocidadDelContador}} km/h
+            
+            </div>
+
+        </font>
+
+        <!-- Módulo y controlador Angular -->
+        <script>
+
+            // Definición del módulo
+            var application = angular.module('miAplicacion', []);
+            
+            // Definición del controlador miControlador
+            // Nota del autor: Sin $ delante del nombre del servicio servicioAcelerar
+            application.controller('miControlador', function($scope, servicioAcelerar) {
+
+                // Velocidad inicial
+                $scope.velocidadDelContador = 200;
+
+                // Función acelerar
+                $scope.acelerar = function() {
+                    $scope.velocidadDelContador = servicioAcelerar.velocidadCoche($scope.velocidadDelContador);
+                }           
+            });
+                
+            // Definición del servicio servicioAcelerar
+            application.service('servicioAcelerar', function() {
+                this.velocidadCoche = function (velocidad) {
+                    return velocidad + 5;
+                }
+            });
+
+        </script>
+
+    </body>
+
+</html>

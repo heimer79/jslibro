@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : WINDOW_01.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Gestión del objeto window
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>WINDOW_01</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - WINDOW_01</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script type="text/javascript">
+		
+			/* Visualización del nombre del script */
+			alert("WINDOW_01");
+
+			/*
+			 Gestión del objeto window
+			 */
+
+			/* Apertura de la ventana */
+			/* Argumentos (en el orden de implementación) :
+			 - URL (Optional) : Indica la dirección URL de la página a abrir. Si no se especifica ninguna URL, una nueva ventana con about: blank se abre
+			 - Nombre de la ventana (Opcional) : Especifica el atributo destino o el nombre de la ventana
+			 Los valores siguientes se soportan :
+			 _blank : URL se carga en una nuevo ventana (valor por defecto)
+			 _padre : URL se carga en el ámbito del padre
+			 _self : URL sustituye la página actual
+			 _top : URL sustituye los juegos de marcos que puedan estar cargados
+			 Nombre : El nombre de la ventana
+			 - Especificaciones detalladas de la ventana :
+			 * height=píxeles : Altura de la ventana (100 píxeles mínimo)
+			 * left=píxeles : Posición de la ventana respecto a la izquierda de la pantalla
+			 * location=yes|no|1|0 : Presencia o no de una barra de dirección
+			 * menubar=yes|no|1|0 : Presencia o no de una barra de menús
+			 * resizable=yes|no|1|0 : Posibilidad o no de redimensionar la ventana
+			 * scrollbars=yes|no|1|0 : Presencia o no de barras de desplazamiento
+			 * status=yes|no|1|0 : Presencia o no de una barra de estado
+			 * titlebar=yes|no|1|0 : Presencia o no de una barra de título
+			 * toolbar=yes|no|1|0 : Presencia o no de una barra de herramientas
+			 * width=píxeles : Longitud de la ventana en píxeles
+			*/
+			miVentana = window.open("", "VENTANA_01", "width=200, height=100, location=yes, titlebar=yes");
+
+			/* Ecritura de un mensaje en la ventana */
+			miVentana.document.write("Ventana creada en <b>Javascript</b>");
+
+			/* Foco en la ventana */
+			miVentana.focus();
+
+		</script>
+
+	</body>
+
+</html>

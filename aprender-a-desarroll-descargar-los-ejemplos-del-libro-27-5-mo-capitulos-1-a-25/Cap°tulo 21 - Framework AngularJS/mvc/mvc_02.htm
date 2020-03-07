@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : mvc_02.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha última modificación : 15/10/2018
+Objetivo : Ejemplo de directiva personal
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Script HTML que integra las directivas AngularJS -->
+    <!-- Nota del autor: La llamada de la directiva se hace en minúsculas
+              con guiones (mi-directiva aquí) -->
+    <div ng-app="miAplicacion" mi-directiva></div>
+
+    <!-- Módulo y directiva AngularJS -->
+    <script>
+
+      // Declaración del módulo llamado miAplicacion
+      var application = angular.module("miAplicacion", []);
+
+      // Declaración de la directiva miDirectiva (en camel case)
+      application.directiva("miDirectiva", function() {
+        return {
+          template : "<font face='Arial'>Directiva personal</font>"
+        };
+      });
+
+    </script>
+
+  </body>
+
+</html>

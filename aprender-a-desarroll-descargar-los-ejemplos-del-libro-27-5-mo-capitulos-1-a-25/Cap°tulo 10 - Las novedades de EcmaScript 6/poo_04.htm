@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : poo_04.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : "POO" en EcmaScript 5 (herencia)
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Utilización del tipo de letra de caracteres Arial -->
+    <font face="Arial">
+
+      <!-- Visualización del título del script -->
+      <h3>Ecmacript 5 : Herencia - Script poo_04.htm</h3>
+
+      <!-- Script JavaScript -->
+      <script>
+
+        /* Definición de una función constructor de nombre Vehiculo */
+        /* Nota del autor: El constructor aquí es vacío */
+        var Vehiculo = function() {};
+
+        /* Añadir un método acelerar al prototipo del constructor Vehiculo */
+        Vehiculo.prototype.acelerar = function()
+        {
+          document.write("acelera<br />");
+        };
+
+        /* Añadir un método frenar al prototipo del constructor Vehiculo */
+        Vehiculo.prototype.frenar = function()
+        {
+          document.write("frena<br />");
+        };
+          
+        /* Definición de una función constructor de nombre Coche */
+        /* Nota del autor: El constructor aquí es vacío */
+        var Coche = function() {};
+          
+        /* Copia de todos los elementos (atributos y métodos)*/
+        /* del prototipo del constructor Vehiculo */
+        /* en el prototipo del constructor Coche */
+        /* Nota del autor: Sobre todo no hacer Coche.prototype = Vehiculo.prototype */
+        /*      porque en este caso, el prototipo se compartirá */
+        for (clave in Vehiculo.prototype)
+        {
+          Coche.prototype[clave] = Vehiculo.prototype[clave];
+        }
+
+        /* Sobrecarga del prototipo del constructor Coche */
+        /* (agregación de un método frenar) */
+        Coche.prototype.frenar = function()
+        {
+          document.write("frena");
+        };
+
+        /* Inicialización de un objeto simca1100 con el constructor Coche */ 
+        var simca1100 = new Coche();
+          
+        /* Llamada al método acelerar del objeto simca1100 */
+        /* accesible desde la copia del prototipo del constructor Vehiculo */
+        document.write("El simca1100 ");
+        simca1100.acelerar();
+
+        /* Llamada al método frenar del objeto simca1100 */
+        /* accesible con el prototipo del constructor Coche */
+        document.write("El simca1100 ");
+        simca1100.frenar();
+
+      </script>
+
+    </font>
+  
+  </body>
+
+</html>

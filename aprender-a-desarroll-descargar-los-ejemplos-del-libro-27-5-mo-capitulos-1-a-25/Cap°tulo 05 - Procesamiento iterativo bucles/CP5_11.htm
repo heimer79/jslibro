@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : CP5_11.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Calcular la media de n números reales leídos por teclado (sucesión terminada por cero)
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>CP5_11</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - Ejercicio CP5_11</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script>
+		
+			/* Visualización del nombre del script */
+			alert("Ejercicio CP5_11");
+
+			/* Declaración de variables locales */
+			var nblu, cont, suma, media;
+
+			/* Inicializaciones */
+			cont = 0;
+			suma = 0.0;
+
+			/* Bucle de tratamiento */
+			do {
+				nblu = parseFloat(prompt("Número (0 para terminar) : "));
+				cont = cont + 1;
+				suma = suma + parseFloat(nblu);
+			} while (nblu!=0)
+
+			/* Visualización del resultado */
+			if (cont == 1) {
+				document.write("No se ha introducido ningún número");
+			} else {
+				media = suma / (cont - 1);
+				document.write("Media : " + media);
+			}
+
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : controle_introducida_12.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 115/10/2018
+Objetivo : Casillas de selección para seleccionar un país
+-->
+
+<!-- Etiqueta HTML -->
+<html lang="es-ES">
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+    <!-- Llamada de checklist-model.js (Cf Vitalets) -->
+    <script src="checklist-model.js">
+    </script>
+    </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Script HTML que integra las directivas AngularJS -->
+    <div ng-app="miAplicacion" ng-controller="miControlador">
+
+      <!-- Utilización del tipo de letra de caracteres Arial -->
+      <font face="Arial">
+
+        <!-- Visualización de la casillas de selección de los países -->
+        <label ng-repeat="pais in lista_pais">
+          <input
+            type="checkbox"
+            checklist-model="casillasSeleccion.lista_pais"
+            checklist-value="pais"
+          />{{pais}}
+        </label>
+
+        <!-- Botones de selección total o de selección -->
+        <br><br>
+        <button ng-click="seleccionTotal()">Seleccionar todos</button>
+        <br>
+        <button ng-click="deseleccionTotal()">Deseleccionar todos</button>
+
+        <!-- Visualización de confirmación de las opciones realizadas
+             con las casillas de selección -->
+        <br /><br />
+        Confirmation de la selección :
+        {{casillasSeleccion.lista_pais}}
+        <br />
+        {{casillasSeleccion.lista_pais[0]}}
+        <br />
+        {{casillasSeleccion.lista_pais[1]}}
+        <br />
+        {{casillasSeleccion.lista_pais[2]}}
+      </font>
+
+    </div>
+
+    <!-- Módulo y controlador AngularJS -->
+    <script>
+
+      // Definición del módulo miAplicacion
+      var application = angular.module("miAplicacion", ["checklist-model"]);
+
+      // Definición del controlador miControlador
+      application.controller("miControlador", function($scope) {
+
+        // Inicialización de la tabla de los países
+        $scope.lista_pais = [
+          "Alemania",
+          "Italia",
+          "Otros"
+        ];
+
+        // Lista de las casillas de selección por defecto
+        $scope.casillasSeleccion = {
+          lista_pais: ["Alemania", "Italia"]
+        };
+
+        // Seleccionar todos
+        $scope.seleccionTotal = function() {
+          $scope.casillasSeleccion.lista_pais = angular.copy($scope.lista_pais);
+        };
+
+        // Deseleccionar todos
+        $scope.deseleccionTotal = function() {
+          $scope.casillasSeleccion.lista_pais = [];
+        };
+
+      });
+
+    </script>
+
+  </body>
+
+</html>

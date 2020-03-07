@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : poo_11.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : POO en EcmaScript 6 (ejemplo 1)
+Referencia : https://googlechrome.github.io/samples/classes-es6/
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+	<!-- Sección HEAD -->
+	<head>
+		<!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	</head>
+
+	<!-- Sección BODY -->
+	<body>
+
+		<!-- Script HTML  -->
+			
+			<!-- Utilización del tipo de letra de caracteres Arial -->
+			<font face="Arial">
+            
+        <!-- Visualización del título del script -->
+        <h1>EcmaScript 6 : POO Sample 1 - Script poo_11.htm</h1>
+  
+  		  <!-- Script JavaScript -->
+  		  <script>
+  			          
+          // Ejemplo 1: Declaración de una clase (Polygon)
+          // =============================================
+          
+          // Definición de una clase Polygon
+          class Polygon {
+            
+            // Método constructor
+            constructor(height, width) {
+              this.name = 'Polygon';
+              this.height = height;
+              this.width = width;
+            }
+          
+            // Método sayName
+            sayName() {
+              document.write('Hi, I am a ', this.name + '.' + '<br />');
+            }
+          
+            // Método sayHistory
+            sayHistory() {
+              document.write('"Polygon" is derived from the Greek polus (many) ' + 'and gonia (angle).' + '<br />');
+            }
+
+          }
+          
+          // Inicialización de un objeto p de la clase Polygon
+          let p = new Polygon(300, 400);
+          
+          // Llamada al método sayName de la clase Polygon
+          p.sayName();
+
+          // Llamada al método sayHistory de la clase Polygon
+          p.sayHistory();
+          
+          // Visualización del atributo with del objeto p
+          document.write('The width of this polygon is ' + p.width);
+
+  		  </script>
+      
+      </font>
+
+	</body>
+
+</html>

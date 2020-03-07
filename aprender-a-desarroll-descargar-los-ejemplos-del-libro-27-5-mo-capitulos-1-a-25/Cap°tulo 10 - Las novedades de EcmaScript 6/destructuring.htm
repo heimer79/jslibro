@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : destructuring.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : Destructring de tabla y de objetos JavaScript
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+ 
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Utilización del tipo de letra de caracteres Arial -->
+    <font face="Arial">
+
+      <!-- Visualización del título del script -->
+      <h3>EcmaScript 6 : Desctructuring de tabla y de objetos JavaScript</h3>
+
+      <!-- Script JavaScript -->
+      <script>
+
+        // Definición de una tabla JavaScript de marcas de coches deportivos
+        let marcasCochesSport = ["Porsche", "Ferrari", "BMW"];
+
+        // Primer destructuring de la tabla JavaScript marcasCochesSport
+        // en variables memoria
+        let [marca1, marca2, marca3] = marcasCochesSport
+
+        // Visualizaciones de control
+        document.write("Marca nº1 : " + marca1 + "<br />");
+        document.write("Marca nº2 : " + marca2  + "<br />");
+        document.write("Marca nº3 : " + marca3 + "<br /><br />");
+
+        // Segundo destructuring de la tabla JavaScript marcasCochesSport
+        // en variables memoria
+        let [marca4, , marca6] = marcasCochesSport
+
+        // Visualizaciones de control
+        document.write("Marca nº4 : " + marca4 + "<br />");
+        document.write("Marca nº6 : " + marca6 + "<br /><br />");
+
+        // Definición de un objeto JavaScript porsche911
+        let porsche911 = {
+          marca : "Porsche",
+          modelo : "911"
+        };
+
+        // Destructuring del objeto porsche911 en variables memoria
+        let {marca, modelo} = porsche911;
+
+        // Visualizaciones de control
+        document.write("Marca preferida : " + marca + "<br />");
+        document.write("Modelo preferido : " + modelo);
+
+      </script>
+      
+    </font>
+
+  </body>
+
+</html>

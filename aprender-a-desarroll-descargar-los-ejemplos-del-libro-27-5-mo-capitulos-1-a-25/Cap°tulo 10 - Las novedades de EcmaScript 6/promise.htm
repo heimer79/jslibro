@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : promise.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : Utilización de las promesas
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Utilización del tipo de letra de caracteres Arial -->
+    <font face="Arial">
+            
+      <!-- Visualización del título del script -->
+      <h3>EcmaScript 6 : Utilización de las promesas</h3>
+
+      <!-- Script JavaScript -->
+      <script>
+
+        document.write("Arranque de los dos coches");
+        document.write(" Porsche 911 vs Ferrari Testarossa<br />");
+        var miPromesa = new Promise(function(resolve, reject) {
+          // Plazo de 5 segundos
+          setTimeout(function() {
+            // Tirada aleatoria del coche la más rápido
+            if (Math.random()>0.5) {
+              // Porsche 911
+              resolve("El Porsche 911 es el más rápido");
+            } else {
+              // Ferrari Testarossa
+              reject("Ferrari Testarossa es el más rápido");
+            }  
+          }, 5000);
+        });
+
+        // Visualización mientras no se haya tratado la promesa
+        // (tratamiento asíncrono))
+        document.write("Control radar en 5 segundos");
+
+        // Resumen del funcionamiento de la promesa
+        miPromesa
+          .then(function(verdicto) {
+             // Caso Porsche 911
+             alert("Verdicto : " + verdicto);
+          })
+          .catch(function(verdicto) {
+            // Caso Ferrari Testarossa
+            alert("Verdicto : " + verdicto);
+          });
+
+      </script>
+
+    </font>
+
+  </body>
+
+</html>

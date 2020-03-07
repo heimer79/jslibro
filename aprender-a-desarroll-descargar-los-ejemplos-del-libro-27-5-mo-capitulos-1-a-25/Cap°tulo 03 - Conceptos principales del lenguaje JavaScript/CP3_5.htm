@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : CP3_5.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Escribir un algoritmo que permita estraer las iniciales de una persona, introduciendo el apellido y el nombre
+por el teclado (ejemplo CV para Christian VIGOUROUX)
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>CP3_5</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - Ejercicio CP3_5</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script>
+		
+			/* Visualización del nombre del script */
+			alert("Ejercicio CP3_5");
+
+			/* Declaración de variables locales */
+			var apellido, nombre, inicial_apellido, inicial_nombre;
+
+			/* Introducir el apellido */
+			apellido = prompt("Apellido :");
+
+			/* Introducir el nombre */
+			nombre = prompt("Nombre :");
+
+			/* Determinación de las iniciales */
+			/* Nota del autor: La numeración de las letras en una cadena empieza en 0 */
+			inicial_apellido = apellido.charAt(0);
+			inicial_nombre = nombre.substring(0, 1);
+
+			/* Visualización de las inicials */
+			document.write("Las iniciales de " + apellido + " " + nombre + " son " + inicial_apellido + inicial_nombre);
+
+		</script>
+
+	</body>
+
+</html>

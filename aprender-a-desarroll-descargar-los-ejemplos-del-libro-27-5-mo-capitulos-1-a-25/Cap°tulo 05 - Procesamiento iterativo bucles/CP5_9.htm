@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : CP5_9.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Calcular la media de 10 números reales leídos por teclado
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>CP5_9</title>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Título de la operación -->
+		<h1>Ediciones ENI - JavaScript - Ejercicio CP5_9</h1>
+
+		<!-- Inicio script JavaScript -->
+		<script>
+		
+			/* Visualización del nombre del script */
+			alert("Ejercicio CP5_9");
+
+			/* Declaración de variables locales */
+			var nblu, cont, suma, media;
+
+			/* Inicializaciones */
+			cont = 1;
+			suma = 0.0;
+
+			/* Bucle de tratamiento */
+			while (cont <= 10) {
+				nblu = parseFloat(prompt("Número nº " + cont + " : "));
+				suma = suma + parseFloat(nblu);
+				cont = cont + 1;
+			}
+
+			/* Visualización del resultado */
+			media = suma / 10;
+			document.write("Media : " + media);
+
+		</script>
+
+	</body>
+
+</html>

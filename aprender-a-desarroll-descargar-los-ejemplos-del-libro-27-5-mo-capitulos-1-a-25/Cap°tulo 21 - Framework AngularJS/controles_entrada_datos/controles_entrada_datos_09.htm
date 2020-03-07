@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : controle_introducida_09.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : Una gestión de semáforo tricolor con encendido/apagado de los colores
+        (utilización de ng-mouseleave sobre las imágenes)
+-->
+
+<!-- Etiqueta HTML -->
+<html lang="es-ES">
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Script HTML que integra las directivas AngularJS -->
+    <div ng-app="miAplicacion" ng-controller="miControlador">
+
+      <!-- Utilización del tipo de letra de caracteres Arial -->
+      <font face="Arial">
+
+        <!-- Visualización de la imagen semaforo_verde.png -->
+        <img
+          src="imagenes/semaforo_verde.png"
+          ng-show="initializarVerde"
+          ng-mouseleave="pasarNaranja()"
+        /img>
+        <!-- Visualización de la imagen semaforo_naranja.png -->
+        <img
+          src="imagenes/semaforo_naranja.png"
+          ng-show="initializarNaranja"
+          ng-mouseleave="pasarRojo()"
+        /img>
+        <!-- Visualización de la imagen semaforo_rojo.png -->
+        <img
+          src="imagenes/semaforo_rojo.png"
+          ng-show="initializarRojo"
+          ng-mouseleave="pasarVerde()"
+        /img>
+
+      </font>
+
+    </div>
+
+    <!-- Módulo y controlador AngularJS -->
+    <script>
+
+      // Definición del módulo miAplicacion
+      var application = angular.module('miAplicacion', []);
+
+      // Definición del controlador miControlador
+      application.controller('miControlador', function($scope) {
+
+        // Inicialización de los colores de semáforo (verde por defecto)
+        $scope.initializarVerde = true;
+        $scope.initializarNaranja = false;
+        $scope.initializarRojo = false;
+
+        // Función pasarVerde
+        $scope.pasarVerde = function() {
+
+          // Paso del semáforo al verde
+          alert("Pasar al verde");
+          $scope.initializarVerde = true;
+          $scope.initializarNaranja = false;
+          $scope.initializarRojo = false;
+
+        };
+
+        // Función pasarNaranja
+        $scope.pasarNaranja = function() {
+
+          // Paso del semáforo al naranja
+          alert("Pasar al naranja");
+          $scope.initializarVerde = false;
+          $scope.initializarNaranja = true;
+          $scope.initializarRojo = false;
+
+        };
+
+        // Función pasarRojo
+        $scope.pasarRojo = function() {
+
+          // Paso del semáforo al rojo
+          alert("Pasar al rojo");
+          $scope.initializarVerde = false;
+          $scope.initializarNaranja = false;
+          $scope.initializarRojo = true;
+
+        };
+
+      });
+
+    </script>
+
+  </body>
+
+</html>

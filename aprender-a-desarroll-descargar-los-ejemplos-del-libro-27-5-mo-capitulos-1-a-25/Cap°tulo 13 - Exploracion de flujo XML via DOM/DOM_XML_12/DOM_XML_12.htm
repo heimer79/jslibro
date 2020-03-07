@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+NOMBRE DEL SCRIPT : DOM_XML_12.htm
+AUTOR : Christian VIGOUROUX
+FECHA DE CREACIÓN : 15/10/2018
+FECHA ÚLTIMA MODIFICACIÓN : 15/10/2018
+OBJETIVO : Gestión DOM - Conversión archivo XML en tabla HTML via DOM (archivo coches.xml) con eliminación de línea
+-->
+
+<!-- Inicio script HTML -->
+<html>
+
+	<!-- Inicio encabezado script HTML -->
+	<head>
+
+		<!-- Etiqueta meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<!-- Título del script HTML -->
+		<title>DOM_XML_12</title>
+
+		<!-- Inicio script JavaScript -->
+		<script type="text/javascript">
+		
+			/* Función cargarCoches */
+			function cargarCoches() {
+				/*
+				Creación de un objeto XMLHttpRequest para intercambiar datos
+				con el servidor en formato texto, XML o JSON
+
+				Nota del autor: Los archivos XML se parsean automáticamente
+				por el objeto y accesibles por los métodos del DOM
+				*/
+				if (window.XMLHttpRequest) {
+					// Código específico para los navegadores
+					// IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					// Código específico para los navegadores IE6, IE5
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+
+				/* Apertura del archivo XML coches.xml en modo síncrono (false)*/
+				xmlhttp.open("GET", "coches.xml", false);
+
+				/* Envío de la consulta HTTP al servidor  */
+				xmlhttp.send();
+
+				/* Creación del documento XML en memoria */
+				xmlDoc = xmlhttp.responseXML;
+
+				/* Implementación del título de la operación */
+				document.write("<h1>Ediciones ENI - JavaScript - DOM_XML_12</h1>");
+
+			}
+
+			/* Función visualizarCoches */
+			function visualizarCoches() {
+				/*
+				Creación de la tabla HTML
+				*/
+				/* Etiqueta HTML de inicio de tabla */
+				document.write("<br />");
+				document.write("<table border='1'>");
+				/* Implementación de la línea de los nombres de las columnas */
+				document.write("<tr>");
+				document.write("<td>");
+				document.write("Marca");
+				document.write("</td>");
+				document.write("<td>");
+				document.write("Modelo");
+				document.write("</td>");
+				document.write("</tr>");
+				/* Recorrido de la lista de los coches */
+				var coche = xmlDoc.getElementosByTagName("coche");
+				for (i = 0; i < coche.length; i++) {
+					/* Implementación de una nueva línea en la tabla HTML */
+					document.write("<tr>");
+					/* Apertura de la primera columna (marca del coche) */
+					document.write("<td>");
+					/* Ecritura del título del libro */
+					document.write(coche[i].getElementosByTagName("marca")[0].childNodes[0].nodeValue);
+					/* Cierre de la primera columna */
+					document.write("</td>");
+					/* Apertura de la segunda columna (modelo del coche)) */
+					document.write("<td>");
+					/* Ecritura del modelo del coche */
+					document.write(coche[i].getElementosByTagName("modelo")[0].childNodes[0].nodeValue);
+					/* Cierre de la segunda columna */
+					document.write("</td>");
+					/* Cierre de la línea en la tabla HTML */
+					document.write("</tr>");
+				}
+				/* Etiqueta HTML de fin de tabla */
+				document.write("</table>");
+				/* Valor de retorno */
+				return true;
+			}
+
+			/* Función eliminarCoche */
+			function eliminarCoche() {
+				/* Visualización del número de coche(s) antes de la eliminación */
+				alert("Número de coche(s) antes de la eliminación : " + xmlDoc.getElementosByTagName('coche').length);
+				/* Eliminación del primer coche */
+				cocheSupprimee = xmlDoc.getElementosByTagName("coche")[0];
+				xmlDoc.documentElemento.removeChild(cocheSupprimee);
+				/* Visualización del nombre de coche(s) después de la eliminación */
+				alert("Número de coche(s) después de la eliminación : " + xmlDoc.getElementosByTagName('coche').length);
+				document.write("<br /><br>Lista de los coches después de la eliminación");
+				visualizarCoches();
+				/* Valor de retorno */
+				return true;
+			}
+
+		</script>
+
+	</head>
+
+	<!-- Inicio sección body del script HTML -->
+	<body>
+
+		<!-- Inicio script JavaScript -->
+		<script type='text/javascript'>
+		
+			/* Visualización del nombre del script */
+			alert("DOM_XML_12");
+
+			/* Carga de los coches desde el archivo XML en un árbol */
+			cargarCoches();
+
+			/* Visualización de la lista de los coches */
+			visualizarCoches();
+
+			/* Eliminación del primer coche */
+			var confirmacionEliminacionCoche = confirm("¿Eliminación del primer coche ?");
+			if (confirmacionEliminacionCoche == true) {
+				eliminarCoche();
+			}
+
+		</script>
+
+	</body>
+
+</html>

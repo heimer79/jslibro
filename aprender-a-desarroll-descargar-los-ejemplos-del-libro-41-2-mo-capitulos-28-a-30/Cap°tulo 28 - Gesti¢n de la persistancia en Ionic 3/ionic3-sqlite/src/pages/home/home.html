@@ -1,0 +1,44 @@
+<!-- Encabezado de la página -->
+<ion-header>
+
+  <!-- Barra de navegación -->  
+  <ion-navbar color="danger">
+    
+    <!-- Título de la página -->
+    <ion-title>
+      Ionic 3 - SQLite
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+<!-- Contenido de la página -->
+<ion-content padding>
+  
+  <!-- Introducción del campo identificador -->
+  <ion-item>
+    <ion-input
+      type="text"
+      [(ngModel)]="identificador"
+      placeholder="Por favor, indique identificador">
+    </ion-input>
+  </ion-item>
+  
+  <!-- Botón de guardar el identificador -->
+  <button
+    ion-button color="danger"
+    (click)="guardarIdentificador()">
+    Validar identificador
+  </button>
+  
+  <!-- Lista de los identificadores -->
+  <ion-list>
+    <br/>Lista de los identificadores :<br/>
+    <ion-item *ngFor="let element of listaIdentificadores">
+      {{ element.identificador }}
+    </ion-item>
+  
+  </ion-list>
+  
+</ion-content>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : bucles_filtros_04.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : Bucle para recorrer en una tabla con ordenación sobre los nombres de las columnas
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+  <!-- Sección HEAD -->
+  <head>
+    <!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Llamada al Framework AngularJS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+  </head>
+
+  <!-- Sección BODY -->
+  <body>
+
+    <!-- Script HTML que integra las directivas AngularJS -->
+    <div ng-app="miAplicacion" ng-controller="miControlador">
+
+      <!-- Utilización del tipo de letra de caracteres Arial -->
+      <font face="Arial">
+
+        <!-- Bucle para recorrer la tabla coches
+             y situarse en una tabla HTML -->
+        <table border="1" width="40%" align="left">
+          <!-- Definición de los nombres de las columnas -->
+          <tr>
+            <th ng-click="miOrdenacion('marca')">Marca</th>
+            <th ng-click="miOrdenacion('modelo')">Modelo</th>
+            <th ng-click="miOrdenacion('pais')">País</th>
+          </tr>
+          <!-- Situar los registros en la tabla HTML -->
+          <tr ng-repeat="coche in coches | orderBy:columnaOrdenacion">
+            <td>{{coche.marca}}</td>
+            <td>{{coche.modelo}}</td>
+            <td>{{coche.pais}}</td>
+          </tr>
+        </table>
+
+      </font>
+
+    </div>
+
+    <!-- Módulo y controlador AngularJS -->
+    <script>
+
+      // Declaración del módulo llamado miAplicacion
+      var application = angular.module("miAplicacion", []);
+
+      // Declaración del controlador llamado miControlador
+      application.controller("miControlador", function($scope) {
+
+        // Inicialización de una tabla de coches
+        $scope.coches = [
+          {marca: "Porsche", modelo: "911", pais: "Alemania"},
+          {marca: "Ferrari", modelo: "Testarossa", pais: "Italia"},
+          {marca: "BMW", modelo: "M5", pais: "Alemania"}
+        ];
+
+        // Ordenar al hacer clic sobre el número de columna de una tabla HTML
+        $scope.miOrdenacion = function(criterioOrdenacion) {
+          $scope.columnaOrdenacion = criterioOrdenacion;
+        }
+      });
+
+    </script>
+
+  </body>
+
+</html>

@@ -1,0 +1,29 @@
+<!-- Encabezado de la página -->
+<ion-header>
+  
+  <!-- Barra de navegación -->
+  <ion-navbar color="primary">
+    
+    <!-- Título de la página -->
+    <ion-title>
+      Ionic 3 - List Basic
+    </ion-title>
+  
+  </ion-navbar>
+</ion-header>
+
+<!-- Contenido de la página -->
+<ion-content>
+  
+  <!-- Lista -->
+  <ion-list>
+    <!-- Botón de selección de un elemento en la lista -->
+    <button
+      ion-item
+      *ngFor="let marca of marcasCoches"
+      (click)="seleccionMarca(marca)">
+      {{ marca }}
+    </button>
+  </ion-list>
+
+</ion-content>

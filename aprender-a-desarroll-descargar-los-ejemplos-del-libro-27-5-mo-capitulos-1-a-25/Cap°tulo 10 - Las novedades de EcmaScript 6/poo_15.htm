@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : poo_14.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : POO en EcmaScript 6 (ejemplo 5)
+Referencia : http://sravi-kiran.blogspot.fr/2015/01/StaticClassMembersInES6.html
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+	<!-- Sección HEAD -->
+	<head>
+		<!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	</head>
+
+	<!-- Sección BODY -->
+	<body>
+
+		<!-- Script HTML  -->
+			
+			<!-- Utilización del tipo de letra de caracteres Arial -->
+			<font face="Arial">
+            
+        <!-- Visualización del título del script -->
+        <h1>EcmaScript 6 : POO Sample 5 - Script poo_15.htm</h1>
+  
+  		  <!-- Script JavaScript -->
+  		  <script>
+  			          
+          // Ejemplo 5 : Método estático
+          // ============================
+          
+          // Definición de una clase Empleado
+          class Empleado
+          {
+            
+            // Método constructor
+            constructor(nombre) {
+              this.nombre = nombre;
+            }
+            
+            // Método de tipo getter (acceso a los valores de los atributos)
+            get getNombre() {
+              // Retorno del nombre
+              return this.nombre;
+            }
+           
+            // Método estático que tiene el número de objetos creados por medio de esta classe
+            static getCounter() {
+              if(!this.counter && this.counter !== 0) {
+                // Inicialización del contador de objetos instanciados
+                this.counter = 0;
+              }
+              else {
+                // Incremento del número de objetos instanciados
+                this.counter++;
+              }
+              // Valor de retorno
+              return this.counter + 1;
+              
+            }
+          
+          }
+          
+          // Inicialización de un objeto empleado1 de la clase Empleado y visualización del número de objetos instanciados
+          let empleado1 = new Empleado("Christian");
+          document.write("Empleado nº1 : " + empleado1.getNombre + "<br />");
+          document.write("Número de empleado(s) : " + Empleado.getCounter() + "<br /><br />");
+          
+          // Inicialización de un objeto empleado1 de la clase Empleado y visualización del número de objetos instanciados
+          let empleado2 = new Empleado("Pascal");
+          document.write("Empleado nº2 : " + empleado2.getNombre + "<br />");          
+          document.write("Número de empleado(s) : " + Empleado.getCounter() + "<br /><br />");
+
+          // Inicialización de un objeto empleado1 de la clase Empleado y visualización del número de objetos instanciados
+          let empleado3 = new Empleado("Olivier");
+          document.write("Empleado nº3 : " + empleado3.getNombre + "<br />");          
+          document.write("Número de empleado(s) : " + Empleado.getCounter())
+
+  		  </script>
+      
+      </font>
+
+	</body>
+
+</html>

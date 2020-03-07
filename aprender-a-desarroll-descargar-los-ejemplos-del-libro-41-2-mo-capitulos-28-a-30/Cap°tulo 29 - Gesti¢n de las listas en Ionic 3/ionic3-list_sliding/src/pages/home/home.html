@@ -1,0 +1,87 @@
+<!-- Encabezado de la página -->
+<ion-header>
+  
+  <!-- Barra de navegación -->
+  <ion-navbar color="primary">
+    <!-- Título de la página -->
+    <ion-title>ionic 3 - List Sliding</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<!-- Contenido de la página -->
+<ion-content>
+  
+  <!-- Lista de países -->
+  <ion-list>
+      
+    <!-- Lista con mecanismo de deslizamiento
+         a la izquierda y a la derecha -->
+    <ion-item-sliding *ngFor="let pays of listaPais; let i=index">
+      <ion-item (click)="mostrarNombrePais(pais.nombre_pais)">
+        <!-- Header del grupo-->
+        <p *ngIf="i % 4 == 0"> 
+          <ion-list-header full color="secondary">
+            Grupo {{ pais.grupo }}
+          </ion-list-header>
+        </p>
+        <!-- Bandera -->
+        <ion-avatar item-left>
+          <img src="{{ pais.bandera }}" />
+        </ion-avatar>
+        <!-- Nombre del país -->
+        <h1>{{ pais.nombre_pais }}</h1>
+        <!-- Apodo -->
+        <h2>Apodo : {{ pais.apodo }}</h2>
+        <!-- Seleccionador -->
+        <h2>Seleccionador : {{ pais.seleccionador }}</h2>
+      </ion-item>
+      
+      <!-- Botones a la izquierda -->
+      <ion-item-options side="left" >
+        
+        <!-- Botones a visualización
+             detallado de un registro -->
+        <button
+          ion-button
+          color="primary"
+          (click)="VerDetallePais(
+            pais.nombre_pais,
+            pais.grupo,
+            pais.apodo,
+            pais.seleccionador
+          )">
+          <ion-icon name="eye"></ion-icon>
+          Visualización
+        </button>
+        
+        <!-- Botón de actualización
+             de un registro -->
+        <button
+          ion-button
+          color="secondary"
+          (click)="modificarFichaPais(pais.nombre_pais)">
+          <ion-icon name="open"></ion-icon>
+          Actualización
+        </button>
+      </ion-item-options>
+      
+      <!-- Botones a la derecha -->
+      <ion-item-options side="right">
+        
+        <!-- Botón de eliminación
+             de un registro -->
+        <button
+          ion-button
+          color="danger"
+          (click)="eliminarFichaPais(pais.nombre_pais)">
+          <ion-icon name="trash"></ion-icon>
+          Eliminación
+        </button>
+      
+      </ion-item-options>
+    
+    </ion-item-sliding>
+  
+  </ion-list>
+    
+</ion-content>

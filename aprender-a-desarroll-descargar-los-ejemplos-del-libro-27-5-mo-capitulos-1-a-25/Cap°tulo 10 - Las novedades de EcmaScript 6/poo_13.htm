@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<!--
+Nombre del script : poo_13.htm
+Autor : Christian VIGOUROUX
+Fecha de creación : 15/10/2018
+Fecha de última modificación : 15/10/2018
+Objetivo : POO en EcmaScript 6 (ejemplo 3)
+Referencia : https://googlechrome.github.io/samples/classes-es6/
+-->
+
+<!-- Etiqueta HTML -->
+<html>
+
+	<!-- Sección HEAD -->
+	<head>
+		<!-- Etiqueta meta de gestión de los acentos UTF-8 -->
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	</head>
+
+	<!-- Sección BODY -->
+	<body>
+
+		<!-- Script HTML  -->
+			
+			<!-- Utilización del tipo de letra de caracteres Arial -->
+			<font face="Arial">
+            
+        <!-- Visualización del título del script -->
+        <h1>EcmaScript 6 : POO Sample 3 - Script poo_13.htm</h1>
+  
+  		  <!-- Script JavaScript -->
+  		  <script>
+  			          
+          // Ejemplo 3 : Extensión de una clase
+          // ==================================
+          
+          // Definición de la clase Polygon
+          class Polygon {
+            
+            // Método constructor
+            constructor(height, width) {
+              this.name = 'Polygon';
+              this.height = height;
+              this.width = width;
+            }
+          
+            // Método sayName
+            sayName() {
+              document.write('Hi, I am a ', this.name + '.' + '<br >');
+            }
+          
+            // Método sayHistory
+            sayHistory() {
+              document.write('"Polygon" is derived from the Greek polus (many) ' + 'and gonia (angle).' + '<br />');
+            }
+
+          }
+          
+          // Definición de una clase Square (extensión de la clase Polygon)
+          class Square extends Polygon {
+            
+            // Método constructor
+            constructor(length) {
+              
+              // La contraseña super sert da acceso a los atributo y métodos de la clase padre (Polygon)
+              // Aquí, el argumento length sirve para indicar a la vez los atributos height y width requeridos por el padre
+              // provided for the Polygon's width and height
+              super(length, length);
+
+              // Definición del atributo name (A posicionar obligatoriamente después de super())
+              this.name = 'Square';
+
+            }
+          
+            // Método de tipo getter (acceso a los valores de los atributos)
+            get area() {
+              // Retorno de la surferficie
+              return this.height * this.width;
+            }
+          
+            // Método de tipo setter (modificación del atributo area)
+            set area(value) {
+              this.area = value;
+            }
+
+          }
+          
+          // Inicialización de un objeto s de la clase Square
+          let s = new Square(5);
+          
+          // Llamada al método (heredado) sayName
+          s.sayName();
+          
+          // Visualización de la superficie cuadrada
+          document.write('The area of this square is ' + s.area);
+
+  		  </script>
+      
+      </font>
+
+	</body>
+
+</html>
